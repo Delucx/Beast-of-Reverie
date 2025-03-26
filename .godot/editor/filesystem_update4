@@ -1,2 +1,5 @@
-res://scripts/test_script.gd
 res://scenes/node_2d.tscn
+res://scripts/player_movement.gd
+res://scripts/player.gd
+res://scripts/player_jump.gd
+res://scripts/player_glide.gd
