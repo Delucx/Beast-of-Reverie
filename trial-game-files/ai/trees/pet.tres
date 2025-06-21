@@ -1,0 +1,94 @@
+[gd_resource type="BehaviorTree" load_steps=28 format=3 uid="uid://un2slm0e8v6b"]
+
+[ext_resource type="Script" uid="uid://7sj5b5j8xitd" path="res://trial-game-files/ai/tasks/random_wander.gd" id="1_osjbk"]
+[ext_resource type="Script" uid="uid://olw7s3p4yd3l" path="res://trial-game-files/ai/tasks/PetCarried.gd" id="1_q5aiu"]
+[ext_resource type="Script" uid="uid://utmcs8cidubm" path="res://trial-game-files/ai/tasks/player_movement.gd" id="2_8akbg"]
+[ext_resource type="Script" uid="uid://nebm3nyhyau7" path="res://trial-game-files/ai/tasks/move_to_position.gd" id="2_kbihe"]
+[ext_resource type="Script" uid="uid://n1xbp5p1h3mv" path="res://trial-game-files/ai/tasks/idle.gd" id="3_eeavh"]
+[ext_resource type="Script" uid="uid://b4gip6l4tun57" path="res://trial-game-files/ai/tasks/follow_player.gd" id="3_kbihe"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_st3xl"]
+
+[sub_resource type="BTAction" id="BTAction_fpbqj"]
+script = ExtResource("1_q5aiu")
+
+[sub_resource type="BTWait" id="BTWait_q5aiu"]
+duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_8akbg"]
+custom_name = "Pet Carried Sequence"
+children = [SubResource("BTAction_fpbqj"), SubResource("BTWait_q5aiu")]
+
+[sub_resource type="BTAction" id="BTAction_q5aiu"]
+script = ExtResource("3_kbihe")
+last_pos_key = &"player_last_pos"
+tolerance = 50.0
+wandering_range = 500.0
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_lodfv"]
+max_duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_1cafw"]
+custom_name = "Follow Player Sequence"
+children = [SubResource("BTAction_q5aiu"), SubResource("BTRandomWait_lodfv")]
+
+[sub_resource type="BTAction" id="BTAction_yjxwf"]
+script = ExtResource("2_8akbg")
+last_pos_key = &"player_last_pos"
+
+[sub_resource type="BTAction" id="BTAction_eeavh"]
+script = ExtResource("1_osjbk")
+min_range_dir = 100.0
+max_range_dir = 400.0
+position = &"pos"
+direction = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_8akbg"]
+script = ExtResource("2_kbihe")
+position = &"pos"
+direction = &"dir"
+tolerance = 30.0
+max_stuck_time = 1.5
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_8akbg"]
+max_duration = 5.0
+
+[sub_resource type="BTAction" id="BTAction_lodfv"]
+script = ExtResource("3_eeavh")
+
+[sub_resource type="BTSequence" id="BTSequence_yjxwf"]
+custom_name = "Idle Sequence"
+children = [SubResource("BTRandomWait_8akbg"), SubResource("BTAction_lodfv")]
+
+[sub_resource type="BTSequence" id="BTSequence_eeavh"]
+custom_name = "Random Wander Sequence"
+children = [SubResource("BTAction_yjxwf"), SubResource("BTAction_eeavh"), SubResource("BTAction_8akbg"), SubResource("BTSequence_yjxwf")]
+
+[sub_resource type="BTProbability" id="BTProbability_8akbg"]
+run_chance = 0.3
+children = [SubResource("BTSequence_eeavh")]
+
+[sub_resource type="BTAction" id="BTAction_4kcgi"]
+script = ExtResource("2_8akbg")
+last_pos_key = &"player_last_pos"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_q5aiu"]
+max_duration = 3.0
+
+[sub_resource type="BTAction" id="BTAction_gi0f4"]
+script = ExtResource("3_eeavh")
+
+[sub_resource type="BTSequence" id="BTSequence_4kcgi"]
+custom_name = "Idle Sequence"
+children = [SubResource("BTAction_4kcgi"), SubResource("BTRandomWait_q5aiu"), SubResource("BTAction_gi0f4")]
+
+[sub_resource type="BTProbability" id="BTProbability_eeavh"]
+run_chance = 0.3
+children = [SubResource("BTSequence_4kcgi")]
+
+[sub_resource type="BTSelector" id="BTSelector_eeavh"]
+children = [SubResource("BTSequence_8akbg"), SubResource("BTSequence_1cafw"), SubResource("BTProbability_8akbg"), SubResource("BTProbability_eeavh")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_st3xl")
+root_task = SubResource("BTSelector_eeavh")

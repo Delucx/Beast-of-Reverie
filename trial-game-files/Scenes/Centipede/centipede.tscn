@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4nm2djmt8bc8"]
+
+[ext_resource type="Texture2D" uid="uid://byrqf4525767x" path="res://assets/body.png" id="1_pv4v4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdii4"]
+size = Vector2(259, 100)
+
+[node name="Centipede" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-72.5, -4)
+shape = SubResource("RectangleShape2D_pdii4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pv4v4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-46, 0)
+texture = ExtResource("1_pv4v4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(-45, 0)
+texture = ExtResource("1_pv4v4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D"]
+position = Vector2(-45, 0)
+texture = ExtResource("1_pv4v4")

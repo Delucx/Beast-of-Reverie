@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3jxpade7hw0g"]
+
+[ext_resource type="Script" uid="uid://8nmm6s8lfxp6" path="res://Scripts/spider_leg.gd" id="1_h33fn"]
+
+[node name="Spider" type="Node2D"]
+script = ExtResource("1_h33fn")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="L1_Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(109, 67)
+
+[node name="L1_Knee" type="Bone2D" parent="Skeleton2D/L1_Hip"]
+position = Vector2(62, 2)
+
+[node name="L1_Foot" type="Bone2D" parent="Skeleton2D/L1_Hip/L1_Knee"]
+position = Vector2(81, -1)
+
+[node name="L2_Hip" type="Bone2D" parent="Skeleton2D"]
+metadata/_edit_lock_ = true
+
+[node name="L2_Knee" type="Bone2D" parent="Skeleton2D/L2_Hip"]
+metadata/_edit_lock_ = true
+
+[node name="L2_Foot" type="Bone2D" parent="Skeleton2D/L2_Hip/L2_Knee"]
+metadata/_edit_lock_ = true
+
+[node name="R1_Hip" type="Bone2D" parent="Skeleton2D"]
+metadata/_edit_lock_ = true
+
+[node name="R1_Knee" type="Bone2D" parent="Skeleton2D/R1_Hip"]
+metadata/_edit_lock_ = true
+
+[node name="R1_Foot" type="Bone2D" parent="Skeleton2D/R1_Hip/R1_Knee"]
+metadata/_edit_lock_ = true
+
+[node name="R2_Hip" type="Bone2D" parent="Skeleton2D"]
+metadata/_edit_lock_ = true
+
+[node name="R2_Knee" type="Bone2D" parent="Skeleton2D/R2_Hip"]
+metadata/_edit_lock_ = true
+
+[node name="L2_Foot" type="Bone2D" parent="Skeleton2D/R2_Hip/R2_Knee"]
+metadata/_edit_lock_ = true

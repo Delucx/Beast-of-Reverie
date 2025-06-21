@@ -1,0 +1,246 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3jxpade7hw0g"]
+
+[ext_resource type="Script" uid="uid://c5b0f1f73n7q2" path="res://Scripts/spider.gd" id="1_nxbgl"]
+[ext_resource type="Texture2D" uid="uid://byrqf4525767x" path="res://assets/body.png" id="2_nxbgl"]
+[ext_resource type="Texture2D" uid="uid://ddyanid8e3ofp" path="res://assets/foot.png" id="2_qu26k"]
+[ext_resource type="Texture2D" uid="uid://ddq2yqjgkx10x" path="res://assets/knee.png" id="3_nxbgl"]
+[ext_resource type="Texture2D" uid="uid://bdufjmj08wrat" path="res://assets/hip.png" id="4_mg3t7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxbgl"]
+radius = 64.0078
+
+[node name="Spider" type="CharacterBody2D"]
+script = ExtResource("1_nxbgl")
+
+[node name="body" type="Sprite2D" parent="."]
+position = Vector2(5, 0)
+texture = ExtResource("2_nxbgl")
+metadata/_edit_lock_ = true
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+position = Vector2(5, 0)
+metadata/_edit_lock_ = true
+
+[node name="L1_Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-44, 33)
+rest = Transform2D(1, 0, 0, 1, -44, 33)
+auto_calculate_length_and_angle = false
+length = 0.0
+bone_angle = 0.0
+
+[node name="L1_Knee" type="Bone2D" parent="Skeleton2D/L1_Hip"]
+position = Vector2(-100, -1)
+rest = Transform2D(1, 0, 0, 1, -100, -1)
+auto_calculate_length_and_angle = false
+length = 0.0
+bone_angle = 0.0
+
+[node name="L1_Foot" type="Bone2D" parent="Skeleton2D/L1_Hip/L1_Knee"]
+position = Vector2(-141, -1)
+rest = Transform2D(1, 0, 0, 1, -141, -1)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -180.0
+
+[node name="foot" type="Sprite2D" parent="Skeleton2D/L1_Hip/L1_Knee/L1_Foot"]
+position = Vector2(-76, -2.99999)
+rotation = -1.5708
+texture = ExtResource("2_qu26k")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Skeleton2D/L1_Hip/L1_Knee/L1_Foot"]
+position = Vector2(-138, -1)
+target_position = Vector2(0, 500)
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/L1_Hip/L1_Knee/L1_Foot"]
+position = Vector2(-138, -1)
+rest = Transform2D(1, 0, 0, 1, -138, -1)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="knee" type="Sprite2D" parent="Skeleton2D/L1_Hip/L1_Knee"]
+position = Vector2(-70, -1)
+rotation = -1.5708
+texture = ExtResource("3_nxbgl")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="hip" type="Sprite2D" parent="Skeleton2D/L1_Hip"]
+position = Vector2(-50, 0)
+rotation = -1.5708
+texture = ExtResource("4_mg3t7")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="L2_Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-39, -15)
+rest = Transform2D(1, 0, 0, 1, -39, -15)
+auto_calculate_length_and_angle = false
+length = 0.0
+bone_angle = 0.0
+
+[node name="L2_Knee" type="Bone2D" parent="Skeleton2D/L2_Hip"]
+position = Vector2(-100, 0)
+rest = Transform2D(1, 0, 0, 1, -100, 0)
+auto_calculate_length_and_angle = false
+length = 0.0
+bone_angle = 0.0
+
+[node name="L2_Foot" type="Bone2D" parent="Skeleton2D/L2_Hip/L2_Knee"]
+position = Vector2(-141, -2)
+rest = Transform2D(1, 0, 0, 1, -141, -2)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -180.0
+
+[node name="foot" type="Sprite2D" parent="Skeleton2D/L2_Hip/L2_Knee/L2_Foot"]
+position = Vector2(-75, -3)
+rotation = -1.5708
+texture = ExtResource("2_qu26k")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Skeleton2D/L2_Hip/L2_Knee/L2_Foot"]
+position = Vector2(-138, -1)
+target_position = Vector2(0, 500)
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/L2_Hip/L2_Knee/L2_Foot"]
+position = Vector2(-138, -1)
+rest = Transform2D(1, 0, 0, 1, -138, -1)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="knee" type="Sprite2D" parent="Skeleton2D/L2_Hip/L2_Knee"]
+position = Vector2(-70, -2)
+rotation = -1.5708
+texture = ExtResource("3_nxbgl")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="hip" type="Sprite2D" parent="Skeleton2D/L2_Hip"]
+position = Vector2(-50, 0)
+rotation = -1.5708
+texture = ExtResource("4_mg3t7")
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="R1_Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(6, -38)
+rest = Transform2D(1, 0, 0, 1, 6, -38)
+auto_calculate_length_and_angle = false
+length = 97.0052
+bone_angle = 0.590657
+
+[node name="R1_Knee" type="Bone2D" parent="Skeleton2D/R1_Hip"]
+position = Vector2(97, 1)
+rest = Transform2D(1, 0, 0, 1, 97, 1)
+auto_calculate_length_and_angle = false
+length = 143.031
+bone_angle = -1.20183
+
+[node name="R1_Foot" type="Bone2D" parent="Skeleton2D/R1_Hip/R1_Knee"]
+position = Vector2(143, -3)
+rest = Transform2D(1, 0, 0, 1, 143, -3)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Skeleton2D/R1_Hip/R1_Knee/R1_Foot"]
+position = Vector2(137, -1)
+target_position = Vector2(0, 500)
+
+[node name="foot" type="Sprite2D" parent="Skeleton2D/R1_Hip/R1_Knee/R1_Foot"]
+position = Vector2(74, -3.00002)
+rotation = -1.5708
+texture = ExtResource("2_qu26k")
+metadata/_edit_lock_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/R1_Hip/R1_Knee/R1_Foot"]
+position = Vector2(137, -1)
+rest = Transform2D(1, 0, 0, 1, 137, -1)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="knee" type="Sprite2D" parent="Skeleton2D/R1_Hip/R1_Knee"]
+position = Vector2(71, -2)
+rotation = -1.5708
+texture = ExtResource("3_nxbgl")
+metadata/_edit_lock_ = true
+
+[node name="hip" type="Sprite2D" parent="Skeleton2D/R1_Hip"]
+position = Vector2(47, 1)
+rotation = -1.5708
+texture = ExtResource("4_mg3t7")
+metadata/_edit_lock_ = true
+
+[node name="R2_Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(20, 14)
+rest = Transform2D(1, 0, 0, 1, 20, 14)
+auto_calculate_length_and_angle = false
+length = 0.0
+bone_angle = 0.0
+
+[node name="R2_Knee" type="Bone2D" parent="Skeleton2D/R2_Hip"]
+position = Vector2(97, 0)
+rest = Transform2D(1, 0, 0, 1, 97, 0)
+auto_calculate_length_and_angle = false
+length = 0.0
+bone_angle = 0.0
+
+[node name="R2_Foot" type="Bone2D" parent="Skeleton2D/R2_Hip/R2_Knee"]
+position = Vector2(144, -3)
+rest = Transform2D(1, 0, 0, 1, 144, -3)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Skeleton2D/R2_Hip/R2_Knee/R2_Foot"]
+position = Vector2(140, 0)
+target_position = Vector2(0, 500)
+
+[node name="foot" type="Sprite2D" parent="Skeleton2D/R2_Hip/R2_Knee/R2_Foot"]
+position = Vector2(74, -3)
+rotation = -1.5708
+texture = ExtResource("2_qu26k")
+metadata/_edit_lock_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/R2_Hip/R2_Knee/R2_Foot"]
+position = Vector2(140, 0)
+rest = Transform2D(1, 0, 0, 1, 140, 0)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="knee" type="Sprite2D" parent="Skeleton2D/R2_Hip/R2_Knee"]
+position = Vector2(71, -2)
+rotation = -1.5708
+texture = ExtResource("3_nxbgl")
+metadata/_edit_lock_ = true
+
+[node name="hip" type="Sprite2D" parent="Skeleton2D/R2_Hip"]
+position = Vector2(47, 1)
+rotation = -1.5708
+texture = ExtResource("4_mg3t7")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nxbgl")
+metadata/_edit_lock_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="FootTarget_L1" type="Marker2D" parent="Node2D"]
+position = Vector2(-418, 30)
+
+[node name="FootTarget_L2" type="Marker2D" parent="Node2D"]
+position = Vector2(-413, -18)
+
+[node name="FootTarget_R1" type="Marker2D" parent="Node2D"]
+position = Vector2(388, -41)
+
+[node name="FootTarget_R2" type="Marker2D" parent="Node2D"]
+position = Vector2(406, 11)

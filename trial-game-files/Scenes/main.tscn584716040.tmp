@@ -1,0 +1,179 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8goe6seepebk"]
+
+[ext_resource type="PackedScene" uid="uid://bdyw6g2gc3qci" path="res://Scenes/Spider/spider_body.tscn" id="1_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://ufsjhx6sm82y" path="res://icon.svg" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://f8vxrxd22wv5" path="res://Scenes/pet/pet.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://Scenes/player/player.tscn" id="3_jjvhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(1234, 126)
+
+[node name="World2D" type="Node2D"]
+
+[node name="SpiderBody" parent="." instance=ExtResource("1_bo1nx")]
+position = Vector2(119, 425)
+
+[node name="Pet" parent="." instance=ExtResource("2_jjvhh")]
+position = Vector2(1269, 553)
+scale = Vector2(0.2, 0.2)
+player_path = NodePath("")
+
+[node name="Player" parent="." instance=ExtResource("3_jjvhh")]
+
+[node name="Platform" type="Node2D" parent="."]
+
+[node name="FootTarget" type="StaticBody2D" parent="Platform"]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget2" type="StaticBody2D" parent="Platform"]
+position = Vector2(307, -27)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget2"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget3" type="StaticBody2D" parent="Platform"]
+position = Vector2(521, -48)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget3"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget3"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget4" type="StaticBody2D" parent="Platform"]
+position = Vector2(735, -24)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget4"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget4"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget5" type="StaticBody2D" parent="Platform"]
+position = Vector2(965, -27)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget5"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget5"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget6" type="StaticBody2D" parent="Platform"]
+position = Vector2(1181, 43)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget6"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget6"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget7" type="StaticBody2D" parent="Platform"]
+position = Vector2(2452, -136)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget7"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget7"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget8" type="StaticBody2D" parent="Platform"]
+position = Vector2(1460, -442)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget8"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget8"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget9" type="StaticBody2D" parent="Platform"]
+position = Vector2(1868, -506)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget9"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget9"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")
+
+[node name="FootTarget10" type="StaticBody2D" parent="Platform"]
+position = Vector2(2311, -461)
+scale = Vector2(0.0911537, 0.986789)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/FootTarget10"]
+position = Vector2(577, 632)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/FootTarget10"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(578, 632)
+scale = Vector2(9.64063, 1)
+texture = ExtResource("1_jjgbg")

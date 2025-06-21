@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc2q88kn1qsrv"]
+
+[ext_resource type="Script" uid="uid://bslgyru2puq3d" path="res://Scenes/leg/leg.gd" id="1_ilhvo"]
+[ext_resource type="Texture2D" uid="uid://bdufjmj08wrat" path="res://assets/hip.png" id="2_0n38a"]
+[ext_resource type="Texture2D" uid="uid://ddq2yqjgkx10x" path="res://assets/knee.png" id="3_ou1fo"]
+[ext_resource type="Texture2D" uid="uid://ddyanid8e3ofp" path="res://assets/foot.png" id="4_aq5t0"]
+
+[node name="Leg" type="Marker2D"]
+script = ExtResource("1_ilhvo")
+
+[node name="Leg" type="Sprite2D" parent="."]
+position = Vector2(50, 0)
+rotation = -1.5708
+texture = ExtResource("2_0n38a")
+
+[node name="Joint1" type="Marker2D" parent="."]
+position = Vector2(98, 0)
+
+[node name="Joint1" type="Sprite2D" parent="Joint1"]
+position = Vector2(69, -3)
+rotation = -1.5708
+texture = ExtResource("3_ou1fo")
+
+[node name="Joint2" type="Marker2D" parent="Joint1"]
+position = Vector2(135, 0)
+
+[node name="Joint2" type="Sprite2D" parent="Joint1/Joint2"]
+position = Vector2(74, -6)
+rotation = -1.5708
+texture = ExtResource("4_aq5t0")
+
+[node name="Hand" type="Marker2D" parent="Joint1/Joint2"]
+position = Vector2(135, -4)

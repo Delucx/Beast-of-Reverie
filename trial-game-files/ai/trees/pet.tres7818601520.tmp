@@ -1,0 +1,78 @@
+[gd_resource type="BehaviorTree" load_steps=24 format=3 uid="uid://un2slm0e8v6b"]
+
+[ext_resource type="Script" uid="uid://7sj5b5j8xitd" path="res://ai/tasks/random_wander.gd" id="1_osjbk"]
+[ext_resource type="Script" uid="uid://utmcs8cidubm" path="res://ai/tasks/player_movement.gd" id="2_8akbg"]
+[ext_resource type="Script" uid="uid://nebm3nyhyau7" path="res://ai/tasks/move_to_position.gd" id="2_kbihe"]
+[ext_resource type="Script" uid="uid://n1xbp5p1h3mv" path="res://ai/tasks/idle.gd" id="3_eeavh"]
+[ext_resource type="Script" uid="uid://b4gip6l4tun57" path="res://ai/tasks/follow_player.gd" id="3_kbihe"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_st3xl"]
+
+[sub_resource type="BTAction" id="BTAction_q5aiu"]
+script = ExtResource("3_kbihe")
+tolerance = 100.0
+wandering_range = 500.0
+
+[sub_resource type="BTSequence" id="BTSequence_1cafw"]
+custom_name = "Follow Player Sequence"
+children = [SubResource("BTAction_q5aiu")]
+
+[sub_resource type="BTAction" id="BTAction_yjxwf"]
+script = ExtResource("2_8akbg")
+
+[sub_resource type="BTAction" id="BTAction_eeavh"]
+script = ExtResource("1_osjbk")
+min_range_dir = 100.0
+max_range_dir = 400.0
+position = &"pos"
+direction = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_8akbg"]
+script = ExtResource("2_kbihe")
+position = &"pos"
+direction = &"dir"
+tolerance = 30.0
+max_stuck_time = 1.5
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_eeavh"]
+max_duration = 3.0
+
+[sub_resource type="BTAction" id="BTAction_lodfv"]
+script = ExtResource("3_eeavh")
+
+[sub_resource type="BTWait" id="BTWait_eeavh"]
+
+[sub_resource type="BTSequence" id="BTSequence_yjxwf"]
+custom_name = "Idle Sequence"
+children = [SubResource("BTAction_lodfv"), SubResource("BTWait_eeavh")]
+
+[sub_resource type="BTSequence" id="BTSequence_eeavh"]
+custom_name = "Random Wander Sequence"
+children = [SubResource("BTAction_yjxwf"), SubResource("BTAction_eeavh"), SubResource("BTAction_8akbg"), SubResource("BTRandomWait_eeavh"), SubResource("BTSequence_yjxwf")]
+
+[sub_resource type="BTProbability" id="BTProbability_8akbg"]
+run_chance = 0.3
+children = [SubResource("BTSequence_eeavh")]
+
+[sub_resource type="BTAction" id="BTAction_4kcgi"]
+script = ExtResource("2_8akbg")
+
+[sub_resource type="BTAction" id="BTAction_gi0f4"]
+script = ExtResource("3_eeavh")
+
+[sub_resource type="BTWait" id="BTWait_yjxwf"]
+
+[sub_resource type="BTSequence" id="BTSequence_4kcgi"]
+custom_name = "Idle Sequence"
+children = [SubResource("BTAction_4kcgi"), SubResource("BTAction_gi0f4"), SubResource("BTWait_yjxwf")]
+
+[sub_resource type="BTProbability" id="BTProbability_eeavh"]
+run_chance = 0.3
+children = [SubResource("BTSequence_4kcgi")]
+
+[sub_resource type="BTSelector" id="BTSelector_eeavh"]
+children = [SubResource("BTSequence_1cafw"), SubResource("BTProbability_8akbg"), SubResource("BTProbability_eeavh")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_st3xl")
+root_task = SubResource("BTSelector_eeavh")

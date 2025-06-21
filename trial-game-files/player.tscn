@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnqhrks8am65q"]
+
+[ext_resource type="Script" uid="uid://b0sgfkw6tje3s" path="res://Scenes/player/player.gd" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://b4dfnet15ola2" path="res://Scenes/player/grapple_controller.gd" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://ufsjhx6sm82y" path="res://icon.svg" id="4_1jxqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e41v5"]
+size = Vector2(122.825, 122.571)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_hqtel")
+SPEED = null
+JUMP_VELOCITY = null
+ACCELERATION = null
+DECELERATION = null
+pet_path = NodePath("../Pet")
+
+[node name="GrappleController" type="Node2D" parent="."]
+script = ExtResource("3_2hs0m")
+max_grapple_distance = 1000.0
+
+[node name="RayCast2D" type="RayCast2D" parent="GrappleController"]
+target_position = Vector2(0, 0)
+
+[node name="Line2D" type="Line2D" parent="GrappleController"]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_1jxqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+shape = SubResource("RectangleShape2D_e41v5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
