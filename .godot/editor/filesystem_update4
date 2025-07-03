@@ -1,0 +1,13 @@
+res://trial-game-files/assets/effects/fog_bg.tscn
+res://trial-game-files/ai/trees/pet.tres
+res://trial-game-files/assets/effects/fog.gdshader
+res://trial-game-files/assets/effects/new_noise_texture_2d.tres
+res://trial-game-files/assets/effects/fog_bg.gdshader
+res://trial-game-files/Scenes/main.tscn
+res://trial-game-files/Scenes/player/player.tscn
+res://trial-game-files/GUI/main_menu.tscn
+res://trial-game-files/GUI/option_setting.tscn
+res://trial-game-files/assets/effects/fog_midbg.tscn
+res://trial-game-files/assets/effects/fog_forebg.tscn
+res://trial-game-files/Scenes/player/grapple_controller.gd
+res://trial-game-files/Scenes/Spider/spider_body.gd

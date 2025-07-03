@@ -62,6 +62,9 @@ func input():
 		#gc.right_grapple.grapple_speed = grapple_speed_ground
 
 func try_jump():
+	if gc.launched:
+		return  # Prevent jumping while grappling
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y += physics.JUMP_VELOCITY
 

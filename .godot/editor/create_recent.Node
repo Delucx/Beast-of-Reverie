@@ -1,3 +1,9 @@
+ColorRect
+ParallaxLayer
+ParallaxBackground
+Sprite2D
+Parallax2D
+Camera2D
 MarginContainer
 Label
 HSlider
@@ -6,10 +12,3 @@ VBoxContainer
 Panel
 TextureRect
 Button
-Sprite2D
-CollisionShape2D
-StaticBody2D
-TileMap
-Node2D
-Node
-CharacterBody2D

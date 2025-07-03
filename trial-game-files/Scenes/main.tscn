@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8goe6seepebk"]
+[gd_scene load_steps=11 format=3 uid="uid://c8goe6seepebk"]
 
 [ext_resource type="PackedScene" uid="uid://bdyw6g2gc3qci" path="res://trial-game-files/Scenes/Spider/spider_body.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://c2h3v23gmce7d" path="res://icon.svg" id="1_jjgbg"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://trial-game-files/Scenes/player/player.tscn" id="3_jjvhh"]
 [ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://trial-game-files/Resources/physics.tres" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://dl6472v7lf7yi" path="res://trial-game-files/Scenes/UI/UI.tscn" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://bi7i0ldvd500c" path="res://trial-game-files/assets/effects/fog_bg.tscn" id="7_n613r"]
+[ext_resource type="PackedScene" uid="uid://bxhwvm8a5lx5u" path="res://trial-game-files/assets/effects/fog_midbg.tscn" id="8_4q85g"]
+[ext_resource type="PackedScene" uid="uid://c4j0eq4mrbtt6" path="res://trial-game-files/assets/effects/fog_forebg.tscn" id="9_25bvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(1234, 128.031)
@@ -31,6 +34,10 @@ offset_left = -404.5
 offset_top = 197.0
 offset_right = -404.5
 offset_bottom = 197.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+zoom = Vector2(0.7, 0.7)
 
 [node name="Platform" type="Node2D" parent="."]
 
@@ -240,3 +247,9 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(378.817, 406.525)
 scale = Vector2(13.0341, 17.1941)
 texture = ExtResource("1_jjgbg")
+
+[node name="fog_bg" parent="." instance=ExtResource("7_n613r")]
+
+[node name="fog_midbg" parent="." instance=ExtResource("8_4q85g")]
+
+[node name="fog_forebg" parent="." instance=ExtResource("9_25bvb")]

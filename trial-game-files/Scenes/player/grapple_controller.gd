@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var grapple_speed: float = 2000
+@export var retract_speed: float = 1200  # Change this to your desired speed
+
 @export var rest_length: float = 10
 @export var stiffness: float = 5
 @export var damping: float = 5
@@ -54,7 +56,7 @@ func update_grapple_ui():
 
 func input():
 	if Input.is_action_just_pressed("grapple_shoot") and not launched and not traveling:
-		print_debug("grapple shoot")
+		#print_debug("grapple shoot")
 		begin_grapple()
 	elif Input.is_action_just_pressed("grapple_return"):
 		retract()
@@ -132,7 +134,7 @@ func retract():
 	traveling = false
 
 func return_grapple(delta):
-	var return_speed := grapple_speed * 2  # Faster return speed (optional)
+	var return_speed := retract_speed
 	var to_player = (player.global_position - grapple_tip)
 	var distance = to_player.length()
 

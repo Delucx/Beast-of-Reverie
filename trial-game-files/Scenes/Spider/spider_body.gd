@@ -64,7 +64,7 @@ func _physics_process(delta):
 
 	var move_vec = Vector2.ZERO
 	
-	print_debug(global_position)
+	#print_debug(global_position)
 	if distance > idle_distance_threshold:
 		var dir = (target.global_position - global_position).normalized()
 		move_vec.x = dir.x * x_speed
