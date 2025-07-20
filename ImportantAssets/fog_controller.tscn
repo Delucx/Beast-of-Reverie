@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu3pfnr2o11jx"]
+
+[ext_resource type="Script" uid="uid://n6655equmvg8" path="res://ImportantAssets/fog_controller.gd" id="1_k6wmg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r8ye"]
+size = Vector2(2433, 324.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n10n"]
+size = Vector2(792.815, 178.75)
+
+[node name="FogController" type="Node2D"]
+script = ExtResource("1_k6wmg")
+player_path = NodePath("../Player")
+fog_rect_paths = Array[String](["/root/World2D/fog_bg/ParallaxLayer/ColorRect", "/root/World2D/fog_midbg/ParallaxLayer2/ColorRect", "/root/World2D/fog_forebg/ParallaxLayer3/ColorRect"])
+
+[node name="OuterFogArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterFogArea"]
+shape = SubResource("RectangleShape2D_6r8ye")
+
+[node name="InnerFogArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerFogArea"]
+shape = SubResource("RectangleShape2D_7n10n")

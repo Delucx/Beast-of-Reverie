@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf453v8oujw20"]
+
+[ext_resource type="PackedScene" uid="uid://dl6472v7lf7yi" path="res://trial-game-files/Scenes/UI/UI.tscn" id="1_j4iy3"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="GrappleDistance" parent="." instance=ExtResource("1_j4iy3")]
+offset_left = 15.0
+offset_top = 606.0
+offset_right = 15.0
+offset_bottom = 606.0
+metadata/_edit_use_anchors_ = true

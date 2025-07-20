@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3jxpade7hw0g"]
 
-[ext_resource type="Script" uid="uid://c5b0f1f73n7q2" path="res://Scripts/spider.gd" id="1_nxbgl"]
-[ext_resource type="Texture2D" uid="uid://byrqf4525767x" path="res://assets/body.png" id="2_nxbgl"]
-[ext_resource type="Texture2D" uid="uid://ddyanid8e3ofp" path="res://assets/foot.png" id="2_qu26k"]
-[ext_resource type="Texture2D" uid="uid://ddq2yqjgkx10x" path="res://assets/knee.png" id="3_nxbgl"]
-[ext_resource type="Texture2D" uid="uid://bdufjmj08wrat" path="res://assets/hip.png" id="4_mg3t7"]
+[ext_resource type="Script" uid="uid://c5b0f1f73n7q2" path="res://ImportantAssets/Scripts/spider.gd" id="1_nxbgl"]
+[ext_resource type="Texture2D" uid="uid://byrqf4525767x" path="res://trial-game-files/assets/body.png" id="2_nxbgl"]
+[ext_resource type="Texture2D" uid="uid://ddyanid8e3ofp" path="res://trial-game-files/assets/foot.png" id="2_qu26k"]
+[ext_resource type="Texture2D" uid="uid://ddq2yqjgkx10x" path="res://trial-game-files/assets/knee.png" id="3_nxbgl"]
+[ext_resource type="Texture2D" uid="uid://bdufjmj08wrat" path="res://trial-game-files/assets/hip.png" id="4_mg3t7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxbgl"]
 radius = 64.0078

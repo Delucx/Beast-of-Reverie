@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl6472v7lf7yi"]
+[gd_scene load_steps=3 format=3 uid="uid://dl6472v7lf7yi"]
 
-[ext_resource type="Script" uid="uid://buw03vv3s6itm" path="res://Scenes/UI/ui.gd" id="1_s86y4"]
-[ext_resource type="Texture2D" uid="uid://ufsjhx6sm82y" path="res://icon.svg" id="2_636u5"]
+[ext_resource type="Script" uid="uid://buw03vv3s6itm" path="res://trial-game-files/Scenes/UI/ui.gd" id="1_s86y4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_636u5"]
 corner_radius_top_left = 4
@@ -10,7 +9,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[node name="Control" type="Control"]
+[node name="GrappleCooldown" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,22 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s86y4")
-
-[node name="GrappleCooldownBar" type="TextureProgressBar" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.001
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.152
-offset_top = 608.0
-offset_right = -1023.0
-grow_horizontal = 2
-grow_vertical = 0
-max_value = 0.5
-nine_patch_stretch = true
-texture_under = ExtResource("2_636u5")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0

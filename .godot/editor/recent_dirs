@@ -1,7 +1,6 @@
-res://trial-game-files/assets/effects
-res://trial-game-files/GUI
-res://resources
-res://scenes/main
+res://ImportantAssets/player
+res://
+res://trial-game-files/Scenes
 D:/Godot/game-dev-team-1/assets/tilemap/tilesets
 D:/Godot/game-dev-team-1/UI
 D:/Godot/game-dev-team-1/resources/background
@@ -13,4 +12,3 @@ D:/Godot/game-dev-team-1/assets/animation/character_movement
 D:/Godot/game-dev-team-1/assets/animation
 D:/Godot/game-dev-team-1/resources
 D:/Godot/game-dev-team-1/assets
-res://scenes

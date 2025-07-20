@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdyw6g2gc3qci"]
+
+[ext_resource type="Script" uid="uid://be4ikk6r4raqk" path="res://ImportantAssets/Spider/spider_body.gd" id="1_xlhen"]
+[ext_resource type="Texture2D" uid="uid://byrqf4525767x" path="res://trial-game-files/assets/body.png" id="2_wg70a"]
+[ext_resource type="PackedScene" uid="uid://cc2q88kn1qsrv" path="res://trial-game-files/Scenes/leg/frontleg.tscn" id="3_ltodt"]
+[ext_resource type="PackedScene" uid="uid://di47sc3b3gtmh" path="res://trial-game-files/Scenes/leg/backleg.tscn" id="4_wg70a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nk60v"]
+radius = 56.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wg70a"]
+radius = 7926.0
+
+[node name="SpiderBody" type="CharacterBody2D" groups=["no_grapple"]]
+collision_layer = 8
+script = ExtResource("1_xlhen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nk60v")
+
+[node name="LowMidCheck2" type="RayCast2D" parent="."]
+position = Vector2(-75, 0)
+target_position = Vector2(0, 170)
+
+[node name="HighMidCheck2" type="RayCast2D" parent="."]
+position = Vector2(-75, 0)
+target_position = Vector2(0, 150)
+
+[node name="LowMidCheck" type="RayCast2D" parent="."]
+position = Vector2(75, 0)
+target_position = Vector2(0, 170)
+
+[node name="HighMidCheck" type="RayCast2D" parent="."]
+position = Vector2(75, 0)
+target_position = Vector2(0, 150)
+
+[node name="FrontCheck" type="RayCast2D" parent="."]
+position = Vector2(300, 0)
+target_position = Vector2(0, 500)
+
+[node name="BackCheck" type="RayCast2D" parent="."]
+position = Vector2(-150, 0)
+target_position = Vector2(0, 500)
+
+[node name="WallCheck" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2(300, 170)
+target_position = Vector2(-200, 0)
+
+[node name="VisionArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
+shape = SubResource("CircleShape2D_wg70a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wg70a")
+
+[node name="FrontLegs" type="Node2D" parent="."]
+
+[node name="Leg" parent="FrontLegs" instance=ExtResource("3_ltodt")]
+
+[node name="Leg2" parent="FrontLegs" instance=ExtResource("3_ltodt")]
+position = Vector2(25, 0)
+
+[node name="BackLegs" type="Node2D" parent="."]
+
+[node name="Leg" parent="BackLegs" instance=ExtResource("4_wg70a")]
+position = Vector2(-24, 0)
+flipped = false
+
+[node name="Leg2" parent="BackLegs" instance=ExtResource("4_wg70a")]
+position = Vector2(-47, 0)
+flipped = false
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
+[connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]

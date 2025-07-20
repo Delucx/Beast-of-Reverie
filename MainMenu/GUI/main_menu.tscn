@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://dql7ipssmwaun"]
+
+[ext_resource type="Script" uid="uid://be53rp0qpgo7q" path="res://MainMenu/GUI/main_menu.gd" id="1_eyf1m"]
+[ext_resource type="Texture2D" uid="uid://bsyqlq3qiyxyr" path="res://ImportantAssets/resources (2)/Bacground/Concept_BGArt.png" id="2_srfp5"]
+[ext_resource type="FontFile" uid="uid://o885xm1rmf1s" path="res://ImportantAssets/resources (2)/Fonts/TheSadTrainRegular-VGd3V.ttf" id="3_raaj2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2c382"]
+font = ExtResource("3_raaj2")
+font_size = 120
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eyf1m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_srfp5")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0338542
+anchor_top = 0.0848766
+anchor_right = 0.954861
+anchor_bottom = 0.932099
+offset_top = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Space" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Beast of Reverie"
+label_settings = SubResource("LabelSettings_2c382")
+
+[node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_raaj2")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+flat = true
+alignment = 0
+
+[node name="OptionButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_raaj2")
+theme_override_font_sizes/font_size = 40
+text = "Option"
+flat = true
+alignment = 0
+
+[node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_raaj2")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+flat = true
+alignment = 0
+
+[node name="VersionLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.965
+anchor_right = 0.178
+anchor_bottom = 1.0
+offset_top = -0.320007
+offset_right = -165.056
+grow_vertical = 0
+text = "Version"
+
+[node name="CreditsLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.797
+anchor_top = 0.965
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.856
+offset_top = -0.320007
+grow_horizontal = 0
+grow_vertical = 0
+text = "Credits"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

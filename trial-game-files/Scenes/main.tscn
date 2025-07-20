@@ -1,21 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8goe6seepebk"]
+[gd_scene load_steps=13 format=3 uid="uid://c8goe6seepebk"]
 
-[ext_resource type="PackedScene" uid="uid://bdyw6g2gc3qci" path="res://trial-game-files/Scenes/Spider/spider_body.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://bdyw6g2gc3qci" path="res://ImportantAssets/Spider/spider_body.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://c2h3v23gmce7d" path="res://icon.svg" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://f8vxrxd22wv5" path="res://trial-game-files/Scenes/pet/pet.tscn" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://trial-game-files/Scenes/player/player.tscn" id="3_jjvhh"]
-[ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://trial-game-files/Resources/physics.tres" id="3_kry3j"]
-[ext_resource type="PackedScene" uid="uid://dl6472v7lf7yi" path="res://trial-game-files/Scenes/UI/UI.tscn" id="7_344ge"]
-[ext_resource type="PackedScene" uid="uid://bi7i0ldvd500c" path="res://trial-game-files/assets/effects/fog_bg.tscn" id="7_n613r"]
-[ext_resource type="PackedScene" uid="uid://bxhwvm8a5lx5u" path="res://trial-game-files/assets/effects/fog_midbg.tscn" id="8_4q85g"]
-[ext_resource type="PackedScene" uid="uid://c4j0eq4mrbtt6" path="res://trial-game-files/assets/effects/fog_forebg.tscn" id="9_25bvb"]
+[ext_resource type="PackedScene" uid="uid://f8vxrxd22wv5" path="res://ImportantAssets/pet/pet.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://ImportantAssets/player/player.tscn" id="3_jjvhh"]
+[ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://ImportantAssets/Resources/physics.tres" id="3_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bi7i0ldvd500c" path="res://ImportantAssets/effects/fog_bg.tscn" id="7_n613r"]
+[ext_resource type="PackedScene" uid="uid://bxhwvm8a5lx5u" path="res://ImportantAssets/effects/fog_midbg.tscn" id="8_4q85g"]
+[ext_resource type="PackedScene" uid="uid://bu3pfnr2o11jx" path="res://ImportantAssets/fog_controller.tscn" id="9_7n10n"]
+[ext_resource type="PackedScene" uid="uid://c4j0eq4mrbtt6" path="res://ImportantAssets/effects/fog_forebg.tscn" id="9_25bvb"]
+[ext_resource type="PackedScene" uid="uid://bf453v8oujw20" path="res://trial-game-files/Scenes/canvas_layer.tscn" id="10_7n10n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(1234, 128.031)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_25bvb"]
+normal = Vector2(1, 0)
+
 [node name="World2D" type="Node2D"]
 
 [node name="SpiderBody" parent="." instance=ExtResource("1_bo1nx")]
+visible = false
 position = Vector2(159, 295)
 
 [node name="Pet" parent="." instance=ExtResource("2_jjvhh")]
@@ -23,23 +28,13 @@ position = Vector2(3218, -252)
 physics = ExtResource("3_kry3j")
 
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(1009, 489)
+position = Vector2(224, 503)
 scale = Vector2(2, 2)
 physics = ExtResource("3_kry3j")
 pet_path = NodePath("../Pet")
-ui_path = NodePath("GrappleCooldown")
-
-[node name="GrappleCooldown" parent="Player" instance=ExtResource("7_344ge")]
-offset_left = -404.5
-offset_top = 197.0
-offset_right = -404.5
-offset_bottom = 197.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-zoom = Vector2(0.7, 0.7)
 
 [node name="Platform" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="FootTarget" type="StaticBody2D" parent="Platform"]
 collision_layer = 15
@@ -253,3 +248,16 @@ texture = ExtResource("1_jjgbg")
 [node name="fog_midbg" parent="." instance=ExtResource("8_4q85g")]
 
 [node name="fog_forebg" parent="." instance=ExtResource("9_25bvb")]
+
+[node name="FogController" parent="." instance=ExtResource("9_7n10n")]
+position = Vector2(1193, 570)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("10_7n10n")]
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+light_mask = 15
+visibility_layer = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(52.5, 298)
+shape = SubResource("WorldBoundaryShape2D_25bvb")

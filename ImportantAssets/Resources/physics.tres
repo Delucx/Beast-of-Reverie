@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Physics" load_steps=2 format=3 uid="uid://btvbqvn4i06r0"]
+
+[ext_resource type="Script" uid="uid://cmfv6718c27lr" path="res://ImportantAssets/Scripts/physics.gd" id="1_1omdp"]
+
+[resource]
+script = ExtResource("1_1omdp")
+SPEED = 200.0
+JUMP_VELOCITY = -400.0
+ACCELERATION = 0.1
+DECELERATION = 1.0
+metadata/_custom_type_script = "uid://cmfv6718c27lr"

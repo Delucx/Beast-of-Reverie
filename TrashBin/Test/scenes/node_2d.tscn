@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://osmsuarllgjd"]
+
+[ext_resource type="Script" uid="uid://cuskkhlnyw24v" path="res://ImportantAssets/scripts (2)/scraps/test_script.gd" id="1_6e84v"]
+[ext_resource type="Script" uid="uid://cpb1ij78qjl0v" path="res://ImportantAssets/scripts (2)/scraps/player.gd" id="2_4vge2"]
+[ext_resource type="Texture2D" uid="uid://c2h3v23gmce7d" path="res://icon.svg" id="2_rnjyy"]
+[ext_resource type="Script" uid="uid://c474xbeihxi3n" path="res://ImportantAssets/scripts (2)/scraps/player_movement.gd" id="3_4vge2"]
+[ext_resource type="Script" uid="uid://drt0kpoug6jvn" path="res://ImportantAssets/scripts (2)/scraps/player_jump.gd" id="5_j7wrs"]
+[ext_resource type="Script" uid="uid://btnh1h5h2pkym" path="res://ImportantAssets/scripts (2)/scraps/player_glide.gd" id="6_fws66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04qyp"]
+size = Vector2(126, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7wrs"]
+size = Vector2(1177, 127.5)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_6e84v")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(475, 260)
+script = ExtResource("2_4vge2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_04qyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_rnjyy")
+
+[node name="movement" type="Node" parent="CharacterBody2D"]
+script = ExtResource("3_4vge2")
+
+[node name="jump" type="Node" parent="CharacterBody2D"]
+script = ExtResource("5_j7wrs")
+
+[node name="glide" type="Node" parent="CharacterBody2D"]
+script = ExtResource("6_fws66")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(64, 584)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(511, 0)
+scale = Vector2(8.98438, 1)
+texture = ExtResource("2_rnjyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(511.5, 0.25)
+shape = SubResource("RectangleShape2D_j7wrs")
