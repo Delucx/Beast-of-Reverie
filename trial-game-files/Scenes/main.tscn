@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8goe6seepebk"]
+[gd_scene load_steps=14 format=3 uid="uid://c8goe6seepebk"]
 
 [ext_resource type="PackedScene" uid="uid://bdyw6g2gc3qci" path="res://ImportantAssets/Spider/spider_body.tscn" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://c2h3v23gmce7d" path="res://icon.svg" id="1_jjgbg"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bu3pfnr2o11jx" path="res://ImportantAssets/fog_controller.tscn" id="9_7n10n"]
 [ext_resource type="PackedScene" uid="uid://c4j0eq4mrbtt6" path="res://ImportantAssets/effects/fog_forebg.tscn" id="9_25bvb"]
 [ext_resource type="PackedScene" uid="uid://bf453v8oujw20" path="res://trial-game-files/Scenes/canvas_layer.tscn" id="10_7n10n"]
+[ext_resource type="Script" uid="uid://dcensidpajnq8" path="res://ImportantAssets/player/Scripts/camera_2d.gd" id="11_7n10n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(1234, 128.031)
@@ -26,12 +27,6 @@ position = Vector2(159, 295)
 [node name="Pet" parent="." instance=ExtResource("2_jjvhh")]
 position = Vector2(3218, -252)
 physics = ExtResource("3_kry3j")
-
-[node name="Player" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(224, 503)
-scale = Vector2(2, 2)
-physics = ExtResource("3_kry3j")
-pet_path = NodePath("../Pet")
 
 [node name="Platform" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -261,3 +256,22 @@ visibility_layer = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(52.5, 298)
 shape = SubResource("WorldBoundaryShape2D_25bvb")
+
+[node name="Player" parent="." instance=ExtResource("3_jjvhh")]
+position = Vector2(2672, -260)
+scale = Vector2(2, 2)
+physics = ExtResource("3_kry3j")
+pet_path = NodePath("../Pet")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+process_callback = 0
+limit_left = 0
+limit_top = -354
+limit_right = 10000
+limit_bottom = 723
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+script = ExtResource("11_7n10n")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://c28c7dheg32oq"]
+
+[ext_resource type="Script" uid="uid://cgqi171yvgmuk" path="res://Stages/ForsakenWoods/loop_path.gd" id="1_agti1"]
+[ext_resource type="PackedScene" uid="uid://cvgdl5tncwfp7" path="res://Stages/ForsakenWoods/forsaken.tscn" id="2_bvu6b"]
+[ext_resource type="PackedScene" uid="uid://f8vxrxd22wv5" path="res://ImportantAssets/pet/pet.tscn" id="2_s6j5k"]
+[ext_resource type="Script" uid="uid://cmfv6718c27lr" path="res://ImportantAssets/Scripts/physics.gd" id="3_bvu6b"]
+[ext_resource type="PackedScene" uid="uid://csgb21o2jw3nw" path="res://Stages/ForsakenWoods/loop_slice.tscn" id="3_tq50e"]
+[ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://ImportantAssets/player/player.tscn" id="4_tq50e"]
+[ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://ImportantAssets/Resources/physics.tres" id="5_omm1s"]
+[ext_resource type="Script" uid="uid://dcensidpajnq8" path="res://ImportantAssets/player/Scripts/camera_2d.gd" id="6_qi26f"]
+
+[sub_resource type="Resource" id="Resource_7s0v6"]
+script = ExtResource("3_bvu6b")
+SPEED = 300.0
+JUMP_VELOCITY = -400.0
+ACCELERATION = 0.1
+DECELERATION = 1.0
+metadata/_custom_type_script = "uid://cmfv6718c27lr"
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_agti1")
+start_map_scene = ExtResource("2_bvu6b")
+loop_map_scene = ExtResource("3_tq50e")
+player_path = NodePath("Player")
+
+[node name="Pet" parent="." groups=["pet"] instance=ExtResource("2_s6j5k")]
+position = Vector2(91, 305)
+scale = Vector2(2, 2)
+collision_mask = 8
+physics = SubResource("Resource_7s0v6")
+
+[node name="Player" parent="." instance=ExtResource("4_tq50e")]
+z_index = 1
+position = Vector2(214, 275)
+scale = Vector2(4, 4)
+physics = ExtResource("5_omm1s")
+pet_path = NodePath("../Pet")
+player_grav = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+limit_left = 0
+limit_right = 30000
+limit_bottom = 723
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+script = ExtResource("6_qi26f")

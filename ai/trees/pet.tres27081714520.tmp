@@ -1,0 +1,122 @@
+[gd_resource type="BehaviorTree" load_steps=36 format=3 uid="uid://un2slm0e8v6b"]
+
+[ext_resource type="Script" uid="uid://olw7s3p4yd3l" path="res://ai/tasks/PetCarried.gd" id="1_gi0f4"]
+[ext_resource type="Script" uid="uid://b4gip6l4tun57" path="res://ai/tasks/follow_player.gd" id="2_yjxwf"]
+[ext_resource type="Script" uid="uid://4fxsd5x36vs1" path="res://ai/tasks/pet_control.gd" id="3_4kcgi"]
+[ext_resource type="Script" uid="uid://cxgupkc3o46" path="res://ai/tasks/follow_target.gd" id="4_fpbqj"]
+[ext_resource type="Script" uid="uid://1724wqjg3bq4" path="res://ai/tasks/pet_interact.gd" id="4_yjxwf"]
+[ext_resource type="Script" uid="uid://utmcs8cidubm" path="res://ai/tasks/player_movement.gd" id="5_0qu4w"]
+[ext_resource type="Script" uid="uid://2w21trbqbk1s" path="res://ai/tasks/pet_interact_target.gd" id="6_0qu4w"]
+[ext_resource type="Script" uid="uid://n1xbp5p1h3mv" path="res://ai/tasks/idle.gd" id="6_713gf"]
+[ext_resource type="Script" uid="uid://7sj5b5j8xitd" path="res://ai/tasks/random_wander.gd" id="7_0js71"]
+[ext_resource type="Script" uid="uid://nebm3nyhyau7" path="res://ai/tasks/move_to_position.gd" id="8_apse4"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_st3xl"]
+
+[sub_resource type="BTAction" id="BTAction_fpbqj"]
+script = ExtResource("1_gi0f4")
+
+[sub_resource type="BTSequence" id="BTSequence_8akbg"]
+custom_name = "Pet Carried Sequence"
+children = [SubResource("BTAction_fpbqj")]
+
+[sub_resource type="BTAction" id="BTAction_0qu4w"]
+script = ExtResource("4_yjxwf")
+interact_target_key = &"pet_interact_target"
+
+[sub_resource type="BTAction" id="BTAction_0js71"]
+script = ExtResource("6_0qu4w")
+interact_target_key = &"pet_interact_target"
+interact_range = 20.0
+
+[sub_resource type="BTSequence" id="BTSequence_fpbqj"]
+custom_name = "Pet Interact Cursor Click Sequence"
+children = [SubResource("BTAction_0qu4w"), SubResource("BTAction_0js71")]
+
+[sub_resource type="BTAction" id="BTAction_g54vs"]
+script = ExtResource("3_4kcgi")
+target_position_key = &"pet_target_position"
+
+[sub_resource type="BTAction" id="BTAction_o8qit"]
+script = ExtResource("4_fpbqj")
+target_position_key = &"pet_target_position"
+tolerance = 10.0
+
+[sub_resource type="BTParallel" id="BTParallel_4kcgi"]
+custom_name = "Follow Cursor Click Sequence"
+children = [SubResource("BTAction_g54vs"), SubResource("BTAction_o8qit")]
+
+[sub_resource type="BTAction" id="BTAction_q5aiu"]
+script = ExtResource("2_yjxwf")
+last_pos_key = &"player_last_pos"
+follow_flag_key = &"pet_should_follow_player"
+tolerance = 50.0
+wandering_range = 500.0
+
+[sub_resource type="BTSequence" id="BTSequence_1cafw"]
+custom_name = "Follow Player Sequence"
+children = [SubResource("BTAction_q5aiu")]
+
+[sub_resource type="BTAction" id="BTAction_4kcgi"]
+script = ExtResource("5_0qu4w")
+last_pos_key = &"player_last_pos"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_q5aiu"]
+max_duration = 3.0
+
+[sub_resource type="BTAction" id="BTAction_gi0f4"]
+script = ExtResource("6_713gf")
+
+[sub_resource type="BTSequence" id="BTSequence_4kcgi"]
+custom_name = "Idle Sequence"
+children = [SubResource("BTAction_4kcgi"), SubResource("BTRandomWait_q5aiu"), SubResource("BTAction_gi0f4")]
+
+[sub_resource type="BTProbability" id="BTProbability_eeavh"]
+run_chance = 0.3
+children = [SubResource("BTSequence_4kcgi")]
+_enabled = false
+
+[sub_resource type="BTAction" id="BTAction_yjxwf"]
+script = ExtResource("5_0qu4w")
+last_pos_key = &"player_last_pos"
+
+[sub_resource type="BTAction" id="BTAction_eeavh"]
+script = ExtResource("7_0js71")
+min_range_dir = 100.0
+max_range_dir = 400.0
+position = &"pos"
+direction = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_8akbg"]
+script = ExtResource("8_apse4")
+position = &"pos"
+direction = &"dir"
+tolerance = 30.0
+max_stuck_time = 1.5
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_8akbg"]
+max_duration = 5.0
+
+[sub_resource type="BTAction" id="BTAction_lodfv"]
+script = ExtResource("6_713gf")
+
+[sub_resource type="BTSequence" id="BTSequence_yjxwf"]
+custom_name = "Idle Sequence"
+children = [SubResource("BTRandomWait_8akbg"), SubResource("BTAction_lodfv")]
+
+[sub_resource type="BTSequence" id="BTSequence_eeavh"]
+custom_name = "Random Wander Sequence"
+children = [SubResource("BTAction_yjxwf"), SubResource("BTAction_eeavh"), SubResource("BTAction_8akbg"), SubResource("BTSequence_yjxwf")]
+
+[sub_resource type="BTProbability" id="BTProbability_8akbg"]
+run_chance = 0.1
+children = [SubResource("BTSequence_eeavh")]
+_enabled = false
+
+[sub_resource type="BTParallel" id="BTParallel_713gf"]
+repeat = true
+children = [SubResource("BTSequence_8akbg"), SubResource("BTSequence_fpbqj"), SubResource("BTParallel_4kcgi"), SubResource("BTSequence_1cafw"), SubResource("BTProbability_eeavh"), SubResource("BTProbability_8akbg")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_st3xl")
+root_task = SubResource("BTParallel_713gf")

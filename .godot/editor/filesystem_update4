@@ -1,4 +1,3 @@
-res://Tutorial/tutorial.tscn
+res://Stages/ForsakenWoods/loop_slice.tscn
+res://ai/trees/pet.tres
 res://ImportantAssets/effects/fog_bg.gdshader
-res://ImportantAssets/player/player.tscn
-res://ImportantAssets/ai/trees/pet.tres

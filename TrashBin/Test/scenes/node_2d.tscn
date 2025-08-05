@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c2h3v23gmce7d" path="res://icon.svg" id="2_rnjyy"]
 [ext_resource type="Script" uid="uid://c474xbeihxi3n" path="res://ImportantAssets/scripts (2)/scraps/player_movement.gd" id="3_4vge2"]
 [ext_resource type="Script" uid="uid://drt0kpoug6jvn" path="res://ImportantAssets/scripts (2)/scraps/player_jump.gd" id="5_j7wrs"]
-[ext_resource type="Script" uid="uid://btnh1h5h2pkym" path="res://ImportantAssets/scripts (2)/scraps/player_glide.gd" id="6_fws66"]
+[ext_resource type="Script" uid="uid://btnh1h5h2pkym" path="res://ImportantAssets/player/Scripts/player_glide.gd" id="6_fws66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04qyp"]
 size = Vector2(126, 128)

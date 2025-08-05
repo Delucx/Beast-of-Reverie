@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bxa0b57sick6q"
+path="res://.godot/imported/curved_vine2.png-7231a9eb9cea3975b874e22cba48cad2.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/curved_vine2.png"
+dest_files=["res://.godot/imported/curved_vine2.png-7231a9eb9cea3975b874e22cba48cad2.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

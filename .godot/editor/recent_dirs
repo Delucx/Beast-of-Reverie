@@ -1,5 +1,14 @@
-res://ImportantAssets/player
 res://
+res://ImportantAssets/gameUI/GUI
+res://ImportantAssets/gameUI
+res://Stages/LakeOfDisturbance
+res://ImportantAssets/Scripts
+res://ImportantAssets/player
+res://ImportantAssets
+res://ImportantAssets/pet/Animations
+res://Stages/ForsakenWoods
+res://ai
+res://ImportantAssets/player/Scripts
 res://trial-game-files/Scenes
 D:/Godot/game-dev-team-1/assets/tilemap/tilesets
 D:/Godot/game-dev-team-1/UI

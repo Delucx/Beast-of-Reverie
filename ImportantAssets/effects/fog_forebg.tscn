@@ -20,16 +20,16 @@ shader_parameter/density = 0.8
 shader_parameter/speed = Vector2(-0.01, 0.01)
 shader_parameter/thickness = 2.0
 shader_parameter/view = 0.8
-shader_parameter/opacity = 1.0
+shader_parameter/opacity = 0.5
 
 [node name="fog_forebg" type="ParallaxBackground"]
 layer = 2
 scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(1152, 648)
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxLayer3"]
+[node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_j3ogi")

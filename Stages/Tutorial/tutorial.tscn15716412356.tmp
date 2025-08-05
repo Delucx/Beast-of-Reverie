@@ -1,0 +1,465 @@
+[gd_scene load_steps=36 format=3 uid="uid://dgwie4uduy8wa"]
+
+[ext_resource type="Texture2D" uid="uid://cimris8yhbkde" path="res://Stages/Tutorial/1. PUTRID SEA/background/Water & Wall.png" id="1_gotrj"]
+[ext_resource type="Texture2D" uid="uid://bxvihtb1ijx80" path="res://Stages/Tutorial/1. PUTRID SEA/floor/sand_newstart.png" id="2_8gg8w"]
+[ext_resource type="Texture2D" uid="uid://4wqtf4j71r6r" path="res://Stages/Tutorial/1. PUTRID SEA/background/sea_foam.png" id="3_w8ew0"]
+[ext_resource type="Texture2D" uid="uid://cvl82nn7w0w3x" path="res://Stages/Tutorial/1. PUTRID SEA/pebbles and boulders/flat_boulder1.png" id="5_mtfnd"]
+[ext_resource type="Texture2D" uid="uid://bu4k8u2blqxms" path="res://Stages/Tutorial/1. PUTRID SEA/background/cloud_var4.png" id="5_ngs4g"]
+[ext_resource type="Texture2D" uid="uid://cio6q7vxtr3e8" path="res://Stages/Tutorial/1. PUTRID SEA/pebbles and boulders/flat_boulder2.png" id="6_2134p"]
+[ext_resource type="Texture2D" uid="uid://c27nwc3u8764" path="res://Stages/Tutorial/1. PUTRID SEA/background/cloud_var3.png" id="6_mtfnd"]
+[ext_resource type="Texture2D" uid="uid://b3028pt77c3sc" path="res://Stages/Tutorial/1. PUTRID SEA/background/cloud_var2.png" id="7_2134p"]
+[ext_resource type="Texture2D" uid="uid://cwus20pheyhb4" path="res://Stages/Tutorial/1. PUTRID SEA/pebbles and boulders/flat_boulder3.png" id="7_y527w"]
+[ext_resource type="Texture2D" uid="uid://cbwk7ol5c1yoi" path="res://Stages/Tutorial/1. PUTRID SEA/pebbles and boulders/flat_boulder4.png" id="8_m4le4"]
+[ext_resource type="Texture2D" uid="uid://d1q0gn6kjmph4" path="res://Stages/Tutorial/1. PUTRID SEA/background/cloud_var1.png" id="8_y527w"]
+[ext_resource type="Texture2D" uid="uid://b8e01cq0oka7o" path="res://Stages/Tutorial/1. PUTRID SEA/pebbles and boulders/flat_boulder5.png" id="9_f4mv3"]
+[ext_resource type="Texture2D" uid="uid://bmxl20afojyyf" path="res://Stages/Tutorial/1. PUTRID SEA/floor/sand_newplain1.png" id="9_m4le4"]
+[ext_resource type="Texture2D" uid="uid://c17diqh31dydg" path="res://Stages/Tutorial/1. PUTRID SEA/floor/sand_newplain2.png" id="10_f4mv3"]
+[ext_resource type="Texture2D" uid="uid://b1os86fmvylse" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_back1.png" id="10_kv54i"]
+[ext_resource type="Texture2D" uid="uid://bti7kghb4b2pm" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_front1.png" id="11_2iuxr"]
+[ext_resource type="Texture2D" uid="uid://ccp4k1qv7kcxp" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_back2.png" id="12_a5uoa"]
+[ext_resource type="Texture2D" uid="uid://dh2me5lfrts0t" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_front2.png" id="13_jbv1u"]
+[ext_resource type="Texture2D" uid="uid://cvkwxhoq5sq43" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_back3.png" id="14_33e4n"]
+[ext_resource type="Texture2D" uid="uid://drgpqokwg8wta" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_front3.png" id="15_grqvh"]
+[ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://ImportantAssets/player/player.tscn" id="15_rbkio"]
+[ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://ImportantAssets/Resources/physics.tres" id="16_2134p"]
+[ext_resource type="Texture2D" uid="uid://c011foq8lpa4c" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_back4.png" id="16_wesip"]
+[ext_resource type="Texture2D" uid="uid://brbnhdeqtgimq" path="res://Stages/Tutorial/1. PUTRID SEA/ribcage/rib_front4.png" id="17_egpff"]
+[ext_resource type="Texture2D" uid="uid://cirxr2qodp2ml" path="res://Stages/Tutorial/1. PUTRID SEA/pebbles and boulders/small_boulder4.png" id="18_28sib"]
+[ext_resource type="Script" uid="uid://wh5sbsrrr85r" path="res://ImportantAssets/Quicksand/quicksand.gd" id="26_2iuxr"]
+[ext_resource type="PackedScene" uid="uid://f8vxrxd22wv5" path="res://ImportantAssets/pet/pet.tscn" id="27_a5uoa"]
+[ext_resource type="Script" uid="uid://cmfv6718c27lr" path="res://ImportantAssets/Scripts/physics.gd" id="28_jbv1u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kv54i"]
+normal = Vector2(1, 0)
+distance = -1871.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2iuxr"]
+distance = -721.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rbkio"]
+a = Vector2(241, 490)
+b = Vector2(2, 547)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2iuxr"]
+a = Vector2(3.00049, 547)
+b = Vector2(-1882, 533)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ndlyo"]
+a = Vector2(834, 500)
+b = Vector2(240, 490)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kv54i"]
+a = Vector2(9710, 534)
+b = Vector2(827, 500)
+
+[sub_resource type="Resource" id="Resource_33e4n"]
+script = ExtResource("28_jbv1u")
+SPEED = 300.0
+JUMP_VELOCITY = -400.0
+ACCELERATION = 0.1
+DECELERATION = 1.0
+metadata/_custom_type_script = "uid://cmfv6718c27lr"
+
+[node name="Tutorial" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="WorldBoundary" type="StaticBody2D" parent="." groups=["no_grapple"]]
+visible = false
+collision_layer = 15
+collision_mask = 15
+metadata/_edit_lock_ = true
+
+[node name="WorldBlockX" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(1871, 0)
+shape = SubResource("WorldBoundaryShape2D_kv54i")
+metadata/_edit_lock_ = true
+
+[node name="WorldBlockY" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(1871, 0)
+shape = SubResource("WorldBoundaryShape2D_2iuxr")
+metadata/_edit_lock_ = true
+
+[node name="BackgroundUI" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Water&Wall" type="Sprite2D" parent="BackgroundUI"]
+position = Vector2(6064, 183)
+scale = Vector2(6.37812, 1)
+texture = ExtResource("1_gotrj")
+
+[node name="GroundUI" type="Node2D" parent="BackgroundUI"]
+position = Vector2(1871, 0)
+
+[node name="SandNewstart" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(30, 518)
+texture = ExtResource("2_8gg8w")
+
+[node name="SandNewplain1" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(1684, 522.5)
+texture = ExtResource("9_m4le4")
+
+[node name="SandNewplain2" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(3604, 516.5)
+texture = ExtResource("10_f4mv3")
+
+[node name="SandNewplain3" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(5518, 524.5)
+texture = ExtResource("9_m4le4")
+
+[node name="SandNewplain4" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(7438, 518.5)
+texture = ExtResource("10_f4mv3")
+
+[node name="SandNewplain5" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(9358, 519)
+texture = ExtResource("10_f4mv3")
+
+[node name="FlatBoulder1" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(952, 477)
+scale = Vector2(0.262252, 0.450192)
+texture = ExtResource("5_mtfnd")
+
+[node name="FlatBoulder2" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(1293, 504)
+scale = Vector2(0.322797, 0.54955)
+texture = ExtResource("6_2134p")
+
+[node name="FlatBoulder3" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(1668, 510)
+scale = Vector2(0.412144, 0.514706)
+texture = ExtResource("7_y527w")
+
+[node name="FlatBoulder4" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(2089, 511)
+scale = Vector2(0.378151, 0.539409)
+texture = ExtResource("8_m4le4")
+
+[node name="FlatBoulder5" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(2594, 516)
+scale = Vector2(0.448448, 0.498418)
+texture = ExtResource("9_f4mv3")
+
+[node name="FlatBoulder6" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(5908.38, 516.5)
+scale = Vector2(0.782567, 0.418919)
+texture = ExtResource("6_2134p")
+
+[node name="FlatBoulder7" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(6473.75, 540)
+scale = Vector2(0.969668, 0.454955)
+texture = ExtResource("6_2134p")
+
+[node name="FlatBoulder8" type="Sprite2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(7124.75, 520)
+scale = Vector2(0.965836, 0.506757)
+texture = ExtResource("6_2134p")
+
+[node name="GrappleSwing" type="Node2D" parent="BackgroundUI/GroundUI"]
+
+[node name="RibBack1" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+position = Vector2(2998, 233)
+scale = Vector2(0.62013, 0.62013)
+texture = ExtResource("10_kv54i")
+
+[node name="RibFront1" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+z_index = 1
+position = Vector2(3097, 282)
+scale = Vector2(0.532574, 0.532574)
+texture = ExtResource("11_2iuxr")
+
+[node name="RibBack2" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+position = Vector2(3411, 281)
+scale = Vector2(0.56015, 0.56015)
+texture = ExtResource("12_a5uoa")
+
+[node name="RibFront2" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+z_index = 1
+position = Vector2(3477.13, 327.309)
+scale = Vector2(0.505125, 0.505125)
+texture = ExtResource("13_jbv1u")
+
+[node name="RibBack3" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+position = Vector2(3753, 313)
+scale = Vector2(0.476096, 0.476096)
+texture = ExtResource("14_33e4n")
+
+[node name="RibFront3" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+z_index = 1
+position = Vector2(3820, 365)
+scale = Vector2(0.47875, 0.47875)
+texture = ExtResource("15_grqvh")
+
+[node name="RibBack4" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+position = Vector2(4043, 360)
+scale = Vector2(0.526738, 0.526738)
+texture = ExtResource("16_wesip")
+
+[node name="RibFront4" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+z_index = 1
+position = Vector2(4149, 454)
+scale = Vector2(0.424603, 0.424603)
+texture = ExtResource("17_egpff")
+
+[node name="SmallBoulder4" type="Sprite2D" parent="BackgroundUI/GroundUI/GrappleSwing"]
+position = Vector2(4381, 488)
+scale = Vector2(0.379829, 0.375)
+texture = ExtResource("18_28sib")
+
+[node name="QuickSand" type="Node2D" parent="BackgroundUI/GroundUI"]
+position = Vector2(-1871, 0)
+
+[node name="SandNewplain6" type="Sprite2D" parent="BackgroundUI/GroundUI/QuickSand"]
+z_index = 1
+position = Vector2(3555, 714.5)
+texture = ExtResource("9_m4le4")
+
+[node name="SandNewplain7" type="Sprite2D" parent="BackgroundUI/GroundUI/QuickSand"]
+z_index = 1
+position = Vector2(5475, 708.5)
+texture = ExtResource("10_f4mv3")
+
+[node name="SandNewplain8" type="Sprite2D" parent="BackgroundUI/GroundUI/QuickSand"]
+z_index = 1
+position = Vector2(7389, 727.5)
+texture = ExtResource("9_m4le4")
+
+[node name="SandNewplain9" type="Sprite2D" parent="BackgroundUI/GroundUI/QuickSand"]
+z_index = 1
+position = Vector2(9309, 721.5)
+texture = ExtResource("10_f4mv3")
+
+[node name="SandNewplain10" type="Sprite2D" parent="BackgroundUI/GroundUI/QuickSand"]
+z_index = 1
+position = Vector2(11229, 748)
+texture = ExtResource("10_f4mv3")
+
+[node name="SeaFoam" type="Node2D" parent="BackgroundUI"]
+position = Vector2(1871, 0)
+
+[node name="SeaFoam" type="Sprite2D" parent="BackgroundUI/SeaFoam"]
+position = Vector2(26, 522)
+texture = ExtResource("3_w8ew0")
+
+[node name="Cloud" type="Node2D" parent="BackgroundUI"]
+position = Vector2(1871, 0)
+
+[node name="CloudVar1" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(-1147, -121)
+texture = ExtResource("8_y527w")
+
+[node name="CloudVar2" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(-256, -9)
+texture = ExtResource("7_2134p")
+
+[node name="CloudVar3" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(1686, 9)
+texture = ExtResource("6_mtfnd")
+
+[node name="CloudVar4" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(3752, -141)
+texture = ExtResource("5_ngs4g")
+
+[node name="CloudVar5" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(785, -140)
+texture = ExtResource("8_y527w")
+
+[node name="CloudVar6" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(1897, -109)
+texture = ExtResource("7_2134p")
+
+[node name="CloudVar7" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(3087, -88)
+texture = ExtResource("6_mtfnd")
+
+[node name="CloudVar8" type="Sprite2D" parent="BackgroundUI/Cloud"]
+position = Vector2(5007, -93)
+texture = ExtResource("5_ngs4g")
+
+[node name="TestAssets" type="Node2D" parent="BackgroundUI"]
+
+[node name="SpiderArm" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(4691, 555, 4633, 555, 4673, 510, 4639, 466, 4604, 428, 4667, 430, 4639, 466, 4667, 430, 4720, 499)
+
+[node name="SpiderArm2" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(4914, 556, 4851, 557, 4900, 453, 4792, 335, 4719, 293, 4836, 291, 4959, 448)
+
+[node name="SpiderArm3" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(5132, 555, 5055, 556, 5166, 435, 5143, 262, 5102, 158, 5199, 245, 5226, 440)
+
+[node name="RockPost" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0.843184, 0.843184, 0.843184, 1)
+polygon = PackedVector2Array(5356, 557, 5272, 557, 5000, 370, 5044, 320)
+
+[node name="TreeArm" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(7886, 286, 7919, 251, 8454, 555, 8426, 589)
+
+[node name="TreeArm2" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8504, 589, 8435, 603, 8314, 88, 8376, 70)
+
+[node name="Rope" type="Polygon2D" parent="BackgroundUI/TestAssets"]
+position = Vector2(1871, 0)
+color = Color(0.306923, 0.306923, 0.306923, 1)
+polygon = PackedVector2Array(7894, 275, 7897, 511, 7901, 510)
+
+[node name="GroundCollision" type="StaticBody2D" parent="." groups=["no_grapple"]]
+position = Vector2(1871, 0)
+collision_layer = 9
+collision_mask = 5
+
+[node name="SeafoamCollision" type="CollisionShape2D" parent="GroundCollision"]
+shape = SubResource("SegmentShape2D_rbkio")
+
+[node name="WaterCollision" type="CollisionShape2D" parent="GroundCollision"]
+shape = SubResource("SegmentShape2D_2iuxr")
+
+[node name="SandCollision" type="CollisionShape2D" parent="GroundCollision"]
+shape = SubResource("SegmentShape2D_ndlyo")
+
+[node name="Rope" type="CollisionPolygon2D" parent="GroundCollision"]
+polygon = PackedVector2Array(7894, 290, 7898, 510, 7900, 509)
+
+[node name="PlayerCollision" type="StaticBody2D" parent="."]
+position = Vector2(1871, 0)
+
+[node name="SandCollision" type="CollisionShape2D" parent="PlayerCollision"]
+shape = SubResource("SegmentShape2D_ndlyo")
+
+[node name="RockCollision" type="CollisionPolygon2D" parent="PlayerCollision"]
+position = Vector2(830, 468)
+polygon = PackedVector2Array(-2, 29, 11, 15, 23, -18, 45, -22, 68, -13, 70, -9, 89, -14, 95, -34, 226, -47, 246, 12, 238, 57, 82, 58, 4, 65)
+
+[node name="RockCollision2" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(1169, 521, 1177, 475, 1249, 467, 1254, 469, 1332, 461, 1403, 488, 1418, 526, 1400, 561, 1189, 557, 1180, 533)
+
+[node name="RockCollision3" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(1521, 468, 1536, 457, 1575, 464, 1686, 471, 1691, 481, 1701, 485, 1770, 460, 1796, 493, 1792, 508, 1805, 522, 1808, 534, 1817, 543, 1817, 558, 1805, 562, 1784, 557, 1548, 556, 1531, 535, 1519, 479)
+
+[node name="RockCollision4" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(1910, 544, 1920, 521, 1931, 513, 1928, 498, 1937, 489, 1965, 491, 2171, 463, 2259, 465, 2253, 497, 2267, 533, 2254, 564, 1915, 559)
+
+[node name="RockCollision5" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(2426, 476, 2463, 462, 2763, 476, 2773, 495, 2776, 517, 2791, 541, 2773, 568, 2436, 563, 2411, 551, 2394, 528, 2397, 522, 2424, 493)
+
+[node name="RockCollision6" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(4319, 492, 4337, 482, 4356, 453, 4390, 449, 4422, 458, 4434, 473, 4442, 499, 4442, 517, 4437, 522, 4388, 526, 4329, 524)
+
+[node name="RibBoneCollision" type="CollisionPolygon2D" parent="PlayerCollision"]
+z_index = 1
+polygon = PackedVector2Array(2985, -7, 3063, 0, 3105, -27, 3147, -12, 3168, 10, 3167, 21, 3150, 39, 3157, 52, 3158, 60, 3148, 79, 3062, 120, 2992, 97, 2973, 81)
+
+[node name="RibBoneCollision2" type="CollisionPolygon2D" parent="PlayerCollision"]
+z_index = 1
+polygon = PackedVector2Array(3381, 82, 3451, 90, 3480, 65, 3533, 81, 3541, 91, 3547, 94, 3546, 103, 3535, 120, 3529, 121, 3537, 137, 3532, 154, 3452, 196, 3372, 164, 3368, 148, 3372, 88)
+
+[node name="RibBoneCollision3" type="CollisionPolygon2D" parent="PlayerCollision"]
+z_index = 1
+polygon = PackedVector2Array(3786, 160, 3819, 139, 3866, 162, 3868, 169, 3856, 188, 3864, 199, 3864, 205, 3855, 218, 3782, 246, 3735, 231, 3727, 222, 3739, 161, 3745, 156, 3782, 158)
+
+[node name="RockPlatform" type="CollisionPolygon2D" parent="PlayerCollision"]
+position = Vector2(933, 0)
+polygon = PackedVector2Array(4675, 528, 4694, 496, 4874, 490, 5065, 484, 5242, 505, 5257, 515, 5654, 505, 5831, 523, 5846, 493, 6064, 488, 6306, 481, 6524, 506, 6565, 539, 6512, 572, 5909, 568, 5863, 594, 5226, 591, 5202, 571, 5167, 560, 4723, 556, 4703, 538)
+
+[node name="SpiderArmCollision" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(4604, 428, 4668, 430, 4639, 465)
+
+[node name="SpiderArmCollision2" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(4719, 293, 4836, 291, 4793, 335)
+
+[node name="SpiderArmCollision3" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(5102, 158, 5143, 262, 5199, 245)
+
+[node name="RockPostCollision" type="CollisionPolygon2D" parent="PlayerCollision"]
+polygon = PackedVector2Array(5044, 320, 5000, 369, 5273, 557, 5356, 557)
+
+[node name="Quicksand" type="Area2D" parent="." groups=["no_grapple"]]
+collision_mask = 3
+script = ExtResource("26_2iuxr")
+player_path = NodePath("../Player")
+
+[node name="Quicksand" type="CollisionPolygon2D" parent="Quicksand"]
+z_index = 1
+position = Vector2(3555, 714)
+polygon = PackedVector2Array(-477, -200, -533, -201, -653.8, -201, -788, -188.8, -839, -193.9, -839, -195, -881.3, -195, -900, -189.5, -909, -189, -909, -188.1, -956, -190, -960, -190, -960, 201, 960, 201, 960, -191, 885, -190, 883.1, -190, 759, -198.9, 759, -200.1, 509, -189.9, 509, -189.1, 267, -193, 266.1, -193, 94, -200, 81.9, -200, -110, -189.9, -110, -189, -280, -188, -368.8, -188, -477, -198.9)
+
+[node name="Quicksand2" type="CollisionPolygon2D" parent="Quicksand"]
+z_index = 1
+position = Vector2(5475, 708)
+polygon = PackedVector2Array(186.2, -207.5, 95, -196.3, 95, -195.5, -111, -186.4, -111, -185.5, -281, -184.5, -369.8, -184.5, -478, -195.4, -478, -196.5, -634, -198.5, -634, -199.7, -736.2, -190.5, -737.7, -190.5, -771, -196.3, -771, -197.4, -824, -199.5, -825.2, -199.5, -915, -184.2, -915, -183.5, -960, -183.5, -960, 207.5, 960, 207.5, 960, -183.6, 699, -198.4, 699, -199.6, 583, -194.4, 583, -193.6, 535, -194.5, 533.8, -194.5, 507, -189.1, 507, -188.5, 481, -187.4, 481, -186.6, 373, -188.5, 317.4, -188.5, 217, -207.3)
+
+[node name="Quicksand3" type="CollisionPolygon2D" parent="Quicksand"]
+z_index = 1
+position = Vector2(7389, 729)
+polygon = PackedVector2Array(-477, -200, -533, -201, -653.8, -201, -788, -188.8, -839, -193.9, -839, -195, -881.3, -195, -900, -189.5, -909, -189, -909, -188.1, -956, -190, -960, -190, -960, 201, 960, 201, 960, -191, 885, -190, 883.1, -190, 759, -198.9, 759, -200.1, 509, -189.9, 509, -189.1, 267, -193, 266.1, -193, 94, -200, 81.9, -200, -110, -189.9, -110, -189, -280, -188, -368.8, -188, -477, -198.9)
+
+[node name="Quicksand4" type="CollisionPolygon2D" parent="Quicksand" groups=["pet_interactable"]]
+z_index = 1
+position = Vector2(9309, 724)
+polygon = PackedVector2Array(186.2, -207.5, 95, -196.3, 95, -195.5, -111, -186.4, -111, -185.5, -281, -184.5, -369.8, -184.5, -478, -195.4, -478, -196.5, -634, -198.5, -634, -199.7, -736.2, -190.5, -737.7, -190.5, -771, -196.3, -771, -197.4, -824, -199.5, -825.2, -199.5, -915, -184.2, -915, -183.5, -960, -183.5, -960, 207.5, 960, 207.5, 960, -183.6, 699, -198.4, 699, -199.6, 583, -194.4, 583, -193.6, 535, -194.5, 533.8, -194.5, 507, -189.1, 507, -188.5, 481, -187.4, 481, -186.6, 373, -188.5, 317.4, -188.5, 217, -207.3)
+
+[node name="Quicksand5" type="CollisionPolygon2D" parent="Quicksand"]
+z_index = 1
+position = Vector2(11229, 748)
+polygon = PackedVector2Array(186.2, -207.5, 95, -196.3, 95, -195.5, -111, -186.4, -111, -185.5, -281, -184.5, -369.8, -184.5, -478, -195.4, -478, -196.5, -634, -198.5, -634, -199.7, -736.2, -190.5, -737.7, -190.5, -771, -196.3, -771, -197.4, -824, -199.5, -825.2, -199.5, -915, -184.2, -915, -183.5, -960, -183.5, -960, 207.5, 960, 207.5, 960, -183.6, 699, -198.4, 699, -199.6, 583, -194.4, 583, -193.6, 535, -194.5, 533.8, -194.5, 507, -189.1, 507, -188.5, 481, -187.4, 481, -186.6, 373, -188.5, 317.4, -188.5, 217, -207.3)
+
+[node name="QuicksandDeath" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="Quicksand" type="CollisionPolygon2D" parent="QuicksandDeath"]
+z_index = 1
+position = Vector2(3555, 792)
+polygon = PackedVector2Array(-477, -200, -533, -201, -653.8, -201, -788, -188.8, -839, -193.9, -839, -195, -881.3, -195, -900, -189.5, -909, -189, -909, -188.1, -956, -190, -960, -190, -960, 201, 960, 201, 960, -191, 885, -190, 883.1, -190, 759, -198.9, 759, -200.1, 509, -189.9, 509, -189.1, 267, -193, 266.1, -193, 94, -200, 81.9, -200, -110, -189.9, -110, -189, -280, -188, -368.8, -188, -477, -198.9)
+
+[node name="Quicksand2" type="CollisionPolygon2D" parent="QuicksandDeath"]
+z_index = 1
+position = Vector2(5475, 786)
+polygon = PackedVector2Array(186.2, -207.5, 95, -196.3, 95, -195.5, -111, -186.4, -111, -185.5, -281, -184.5, -369.8, -184.5, -478, -195.4, -478, -196.5, -634, -198.5, -634, -199.7, -736.2, -190.5, -737.7, -190.5, -771, -196.3, -771, -197.4, -824, -199.5, -825.2, -199.5, -915, -184.2, -915, -183.5, -960, -183.5, -960, 207.5, 960, 207.5, 960, -183.6, 699, -198.4, 699, -199.6, 583, -194.4, 583, -193.6, 535, -194.5, 533.8, -194.5, 507, -189.1, 507, -188.5, 481, -187.4, 481, -186.6, 373, -188.5, 317.4, -188.5, 217, -207.3)
+
+[node name="Quicksand3" type="CollisionPolygon2D" parent="QuicksandDeath"]
+z_index = 1
+position = Vector2(7389, 807)
+polygon = PackedVector2Array(-477, -200, -533, -201, -653.8, -201, -788, -188.8, -839, -193.9, -839, -195, -881.3, -195, -900, -189.5, -909, -189, -909, -188.1, -956, -190, -960, -190, -960, 201, 960, 201, 960, -191, 885, -190, 883.1, -190, 759, -198.9, 759, -200.1, 509, -189.9, 509, -189.1, 267, -193, 266.1, -193, 94, -200, 81.9, -200, -110, -189.9, -110, -189, -280, -188, -368.8, -188, -477, -198.9)
+
+[node name="Quicksand4" type="CollisionPolygon2D" parent="QuicksandDeath"]
+z_index = 1
+position = Vector2(9309, 802)
+polygon = PackedVector2Array(186.2, -207.5, 95, -196.3, 95, -195.5, -111, -186.4, -111, -185.5, -281, -184.5, -369.8, -184.5, -478, -195.4, -478, -196.5, -634, -198.5, -634, -199.7, -736.2, -190.5, -737.7, -190.5, -771, -196.3, -771, -197.4, -824, -199.5, -825.2, -199.5, -915, -184.2, -915, -183.5, -960, -183.5, -960, 207.5, 960, 207.5, 960, -183.6, 699, -198.4, 699, -199.6, 583, -194.4, 583, -193.6, 535, -194.5, 533.8, -194.5, 507, -189.1, 507, -188.5, 481, -187.4, 481, -186.6, 373, -188.5, 317.4, -188.5, 217, -207.3)
+
+[node name="Quicksand5" type="CollisionPolygon2D" parent="QuicksandDeath"]
+z_index = 1
+position = Vector2(11229, 826)
+polygon = PackedVector2Array(186.2, -207.5, 95, -196.3, 95, -195.5, -111, -186.4, -111, -185.5, -281, -184.5, -369.8, -184.5, -478, -195.4, -478, -196.5, -634, -198.5, -634, -199.7, -736.2, -190.5, -737.7, -190.5, -771, -196.3, -771, -197.4, -824, -199.5, -825.2, -199.5, -915, -184.2, -915, -183.5, -960, -183.5, -960, 207.5, 960, 207.5, 960, -183.6, 699, -198.4, 699, -199.6, 583, -194.4, 583, -193.6, 535, -194.5, 533.8, -194.5, 507, -189.1, 507, -188.5, 481, -187.4, 481, -186.6, 373, -188.5, 317.4, -188.5, 217, -207.3)
+
+[node name="PetCollision" type="StaticBody2D" parent="." groups=["no_grapple", "pet_interactable"]]
+collision_layer = 8
+collision_mask = 4
+
+[node name="GroundPetCollision" type="CollisionShape2D" parent="PetCollision" groups=["pet_interactable"]]
+position = Vector2(1871, 0)
+shape = SubResource("SegmentShape2D_kv54i")
+
+[node name="Player" parent="." instance=ExtResource("15_rbkio")]
+position = Vector2(9131, 438)
+scale = Vector2(2, 2)
+physics = ExtResource("16_2134p")
+pet_path = NodePath("../Pet")
+player_grav = 2.0
+
+[node name="Pet" parent="." instance=ExtResource("27_a5uoa")]
+position = Vector2(9252, 464)
+collision_mask = 8
+physics = SubResource("Resource_33e4n")
+
+[connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered"]
+[connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited"]
+[connection signal="body_entered" from="QuicksandDeath" to="Quicksand" method="_on_quicksand_death_body_entered"]

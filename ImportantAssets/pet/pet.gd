@@ -9,6 +9,8 @@ extends CharacterBody2D
 var player: CharacterBody2D
 var is_carrying: bool = false
 
+var pulled: bool = false
+
 func _ready():
 	player = get_node(player_path)
 
@@ -67,3 +69,9 @@ func jump():
 
 func set_carried(is_carried: bool):
 	is_carrying = is_carried
+
+func set_rope(rope: bool):
+	pulled = rope
+
+func get_external_anim_player() -> AnimationPlayer:
+	return get_tree().get_root().get_node("Tutorial/Anima/AnimationPlayer")

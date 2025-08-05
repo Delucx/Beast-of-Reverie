@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbrjboiccn2jn"]
+
+[ext_resource type="Texture2D" uid="uid://d4m8ee8nrki4l" path="res://ImportantAssets/gameUI/GUI/scarf1_icon.png" id="1_uknat"]
+[ext_resource type="Texture2D" uid="uid://c1kvcjtaomq6v" path="res://ImportantAssets/gameUI/GUI/scarf1_white.png" id="2_bnoqa"]
+[ext_resource type="Texture2D" uid="uid://7brcyl17dern" path="res://ImportantAssets/gameUI/GUI/scarf2_icon.png" id="3_qewek"]
+[ext_resource type="Texture2D" uid="uid://civxrxunmlq38" path="res://ImportantAssets/gameUI/GUI/scarf2_white.png" id="4_x8pq2"]
+[ext_resource type="Texture2D" uid="uid://dl06dlx7rhua4" path="res://ImportantAssets/gameUI/GUI/head_icon.png" id="5_r1r8r"]
+[ext_resource type="Texture2D" uid="uid://bf0us86lffdyx" path="res://ImportantAssets/gameUI/GUI/head_white.png" id="6_c5ja1"]
+[ext_resource type="Texture2D" uid="uid://u4b7rs7j48dp" path="res://ImportantAssets/gameUI/GUI/wing_slowfall.png" id="7_hbfac"]
+[ext_resource type="Texture2D" uid="uid://b142prwc14ynq" path="res://ImportantAssets/gameUI/GUI/spring_jumpboost.png" id="8_arjsg"]
+[ext_resource type="Texture2D" uid="uid://bsf7hbncd222a" path="res://ImportantAssets/gameUI/GUI/hand_key.png" id="9_h7tji"]
+
+[node name="GameUI" type="CanvasLayer"]
+
+[node name="BarUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="GrappleBar1" type="TextureProgressBar" parent="BarUI"]
+layout_mode = 2
+offset_left = 103.0
+offset_top = -152.0
+offset_right = 328.0
+offset_bottom = -29.0
+texture_under = ExtResource("1_uknat")
+texture_over = ExtResource("1_uknat")
+texture_progress = ExtResource("2_bnoqa")
+
+[node name="GrappleBar2" type="TextureProgressBar" parent="BarUI"]
+layout_mode = 2
+offset_left = 94.0
+offset_top = -96.0
+offset_right = 337.0
+offset_bottom = -18.0
+texture_under = ExtResource("3_qewek")
+texture_over = ExtResource("3_qewek")
+texture_progress = ExtResource("4_x8pq2")
+
+[node name="ChargeJumpBar" type="TextureProgressBar" parent="BarUI"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -125.0
+offset_right = 132.0
+offset_bottom = -19.0
+fill_mode = 3
+texture_under = ExtResource("5_r1r8r")
+texture_over = ExtResource("5_r1r8r")
+texture_progress = ExtResource("6_c5ja1")
+
+[node name="InventoryUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="InventoryUI"]
+layout_mode = 0
+offset_left = -213.0
+offset_top = -65.0
+offset_right = 31.0
+offset_bottom = 32.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="InventoryUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_hbfac")
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_arjsg")
+
+[node name="TextureRect3" type="TextureRect" parent="InventoryUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("9_h7tji")
+
+[node name="VSeparator" type="VSeparator" parent="InventoryUI/GridContainer"]
+layout_mode = 2

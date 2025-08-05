@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://uac4mn41imoo"]
+
+[ext_resource type="PackedScene" uid="uid://choolfha846ej" path="res://Stages/ForsakenWoods/forsaken_spawn.tscn" id="1_7wn2m"]
+[ext_resource type="Texture2D" uid="uid://hdqw1axfddty" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/foggradient.png" id="1_np1lq"]
+[ext_resource type="Script" uid="uid://cdwfwgkcjyfnr" path="res://Stages/ForsakenWoods/forsaken_manager.gd" id="1_v1ree"]
+[ext_resource type="PackedScene" uid="uid://bbrjboiccn2jn" path="res://ImportantAssets/gameUI/game_ui.tscn" id="10_7wn2m"]
+[ext_resource type="PackedScene" uid="uid://f8vxrxd22wv5" path="res://ImportantAssets/pet/pet.tscn" id="11_e2363"]
+[ext_resource type="Script" uid="uid://cmfv6718c27lr" path="res://ImportantAssets/Scripts/physics.gd" id="12_e06wf"]
+[ext_resource type="PackedScene" uid="uid://ee6001hdd8ba" path="res://ImportantAssets/player/player.tscn" id="13_spwla"]
+[ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://ImportantAssets/Resources/physics.tres" id="14_hk4t5"]
+[ext_resource type="Script" uid="uid://dcensidpajnq8" path="res://ImportantAssets/player/Scripts/camera_2d.gd" id="15_5bhli"]
+[ext_resource type="PackedScene" uid="uid://csgb21o2jw3nw" path="res://Stages/ForsakenWoods/loop_slice.tscn" id="17_2rggj"]
+
+[sub_resource type="Resource" id="Resource_884n4"]
+script = ExtResource("12_e06wf")
+SPEED = 300.0
+JUMP_VELOCITY = -400.0
+ACCELERATION = 0.1
+DECELERATION = 1.0
+metadata/_custom_type_script = "uid://cmfv6718c27lr"
+
+[node name="forsaken" type="Node2D"]
+script = ExtResource("1_v1ree")
+loop_map_scene = ExtResource("17_2rggj")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="bg" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -5
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Foggradient" type="Sprite2D" parent="ParallaxBackground/bg"]
+position = Vector2(576.764, -2170)
+scale = Vector2(2.43358, 8.83565)
+texture = ExtResource("1_np1lq")
+
+[node name="midbg" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Foggradient" type="Sprite2D" parent="ParallaxBackground/midbg"]
+position = Vector2(577, -1456)
+scale = Vector2(2.43358, 8.83565)
+texture = ExtResource("1_np1lq")
+
+[node name="forebg" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+z_index = 1
+motion_scale = Vector2(2, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Foggradient" type="Sprite2D" parent="ParallaxBackground/forebg"]
+position = Vector2(577, -769)
+scale = Vector2(2.43358, 8.83565)
+texture = ExtResource("1_np1lq")
+
+[node name="forsaken_spawn" parent="." instance=ExtResource("1_7wn2m")]
+
+[node name="SpawnLoopMap" parent="forsaken_spawn" index="6" node_paths=PackedStringArray("world_path")]
+world_path = NodePath("../..")
+
+[node name="Pet" parent="." groups=["pet"] instance=ExtResource("11_e2363")]
+z_index = 2
+position = Vector2(80, 436)
+scale = Vector2(2, 2)
+collision_mask = 8
+physics = SubResource("Resource_884n4")
+
+[node name="Player" parent="." instance=ExtResource("13_spwla")]
+z_index = 2
+position = Vector2(191, 379)
+scale = Vector2(4, 4)
+physics = ExtResource("14_hk4t5")
+pet_path = NodePath("../Pet")
+ui_path = NodePath("../GameUI/BarUI")
+player_grav = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+limit_left = 0
+limit_bottom = 723
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+script = ExtResource("15_5bhli")
+
+[node name="GameUI" parent="." instance=ExtResource("10_7wn2m")]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="BarUI" parent="GameUI" index="0"]
+offset_left = -2.0
+offset_top = 636.0
+offset_right = -2.0
+offset_bottom = 636.0
+
+[node name="InventoryUI" parent="GameUI" index="1"]
+offset_left = 448.0
+offset_top = 594.0
+offset_right = 488.0
+offset_bottom = 634.0
+
+[node name="GridContainer" parent="GameUI/InventoryUI" index="0"]
+offset_left = 427.5
+offset_top = -66.0
+offset_right = 671.5
+offset_bottom = 31.0
+
+[editable path="forsaken_spawn"]
+[editable path="GameUI"]

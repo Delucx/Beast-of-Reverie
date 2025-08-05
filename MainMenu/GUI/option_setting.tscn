@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvvcttnn624l8"]
+[gd_scene load_steps=5 format=3 uid="uid://bvvcttnn624l8"]
 
 [ext_resource type="Texture2D" uid="uid://bsyqlq3qiyxyr" path="res://ImportantAssets/resources (2)/Bacground/Concept_BGArt.png" id="1_imoaf"]
+[ext_resource type="FontFile" uid="uid://o885xm1rmf1s" path="res://ImportantAssets/resources (2)/Fonts/TheSadTrainRegular-VGd3V.ttf" id="2_lx65h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_71385"]
+font = ExtResource("2_lx65h")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_c87ky"]
+font = ExtResource("2_lx65h")
+font_size = 40
 
 [node name="OptionSetting" type="Control"]
 layout_mode = 3
@@ -35,10 +44,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
@@ -50,45 +59,41 @@ layout_mode = 2
 [node name="Options" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
+label_settings = SubResource("LabelSettings_71385")
 
-[node name="Overall Sound" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
 
-[node name="Spacer" type="Label" parent="Panel/MarginContainer/VBoxContainer/Overall Sound"]
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 20
+columns = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Overall Sound"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Overall Sound"
+label_settings = SubResource("LabelSettings_c87ky")
 
-[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Overall Sound"]
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 rounded = true
 
-[node name="Spacer3" type="Label" parent="Panel/MarginContainer/VBoxContainer/Overall Sound"]
-layout_mode = 2
-
-[node name="BackgroundMusic" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-
-[node name="Spacer" type="Label" parent="Panel/MarginContainer/VBoxContainer/BackgroundMusic"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/BackgroundMusic"]
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Background Music"
+label_settings = SubResource("LabelSettings_c87ky")
 
-[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/BackgroundMusic"]
+[node name="HSlider2" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 rounded = true
-
-[node name="Spacer3" type="Label" parent="Panel/MarginContainer/VBoxContainer/BackgroundMusic"]
-layout_mode = 2

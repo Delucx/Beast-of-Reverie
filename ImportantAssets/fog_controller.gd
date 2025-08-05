@@ -1,55 +1,62 @@
 extends Node2D
 
-@export var player_path: NodePath
-@export var fog_rect_paths: Array[String]
-@onready var player = get_node(player_path)
 @onready var inner_area = $InnerFogArea
 @onready var outer_area = $OuterFogArea
+@onready var fog_node = $"../Fog"
 
 var fog_materials: Array[ShaderMaterial] = []
 
 func _ready():
-	for path in fog_rect_paths:
-		var node = get_node_or_null(path)
-		if node and node is ColorRect and node.material is ShaderMaterial:
-			fog_materials.append(node.material)
-			print_debug("Fog material found for path: %s" % path)
-		else:
-			push_warning("Invalid fog path or missing ShaderMaterial: %s" % path)
+	fog_materials = find_fog_materials() as Array[ShaderMaterial]
 
-func _process(delta):
-	if not player:
+func find_fog_materials() -> Array[ShaderMaterial]:
+	var results: Array[ShaderMaterial] = []
+
+	if not is_instance_valid(fog_node):
+		push_warning("⚠️ Fog node not found near FogController!")
+		return results
+
+	var search_paths = ["fog_bg", "fog_midbg", "fog_forebg"]
+	for fog_name in search_paths:
+		if fog_node.has_node(fog_name):
+			var fog_layer = fog_node.get_node(fog_name)
+			if fog_layer.get_child_count() > 0:
+				var layer = fog_layer.get_child(0)
+				if layer and layer.get_child_count() > 0:
+					var color_rect = layer.get_child(0)
+					if color_rect is ColorRect and color_rect.material is ShaderMaterial:
+						# 👇 Duplicate the material to isolate it
+						var unique_material = color_rect.material.duplicate()
+						color_rect.material = unique_material
+						results.append(unique_material)
+	return results
+
+
+func _process(_delta):
+	var player = Global.player
+	if not is_instance_valid(player):
 		return
+
+	var pos = player.global_position
 
 	var outer_shape := outer_area.get_node("CollisionShape2D").shape as RectangleShape2D
 	var inner_shape := inner_area.get_node("CollisionShape2D").shape as RectangleShape2D
 
 	var outer_center = outer_area.global_position
 	var inner_center = inner_area.global_position
-	var player_pos = player.global_position
 
-	# For rectangle shape, extents is half size of box in x and y
-	# We'll calculate distance from player to inner box edge using axis distances
+	var dx = abs(pos.x - inner_center.x)
+	var dy = abs(pos.y - inner_center.y)
 
-	# Calculate distance from player to inner box center on each axis
-	var dx = abs(player_pos.x - inner_center.x)
-	var dy = abs(player_pos.y - inner_center.y)
-
-	# Calculate how far player is outside inner box on each axis (0 if inside)
 	var dist_x = max(dx - inner_shape.extents.x, 0)
 	var dist_y = max(dy - inner_shape.extents.y, 0)
 
-	# Euclidean distance outside inner box (0 if inside)
 	var dist_to_inner = sqrt(dist_x * dist_x + dist_y * dist_y)
-
-	# Calculate outer box radius approximation (using diagonal)
 	var outer_radius = outer_shape.extents.length()
 	var inner_radius = inner_shape.extents.length()
 
-	# Calculate opacity as linear fade from inner_radius to outer_radius
-	var opacity = clamp(1.0 - (dist_to_inner) / (outer_radius - inner_radius), 0.0, 1.0)
-	print_debug(dist_to_inner)
-	
-	# Apply opacity to all fog materials
+	var opacity = clamp(1.0 - dist_to_inner / (outer_radius - inner_radius), 0.0, 1.0)
+
 	for mat in fog_materials:
-		mat.set_shader_parameter("opacity", opacity)
+		if is_instance_valid(mat):
+			mat.set_shader_parameter("opacity", opacity)
