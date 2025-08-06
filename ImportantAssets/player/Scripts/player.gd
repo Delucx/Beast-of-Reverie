@@ -149,14 +149,11 @@ func try_jump(delta):
 	
 	# Charge jump logic
 	if Input.is_action_pressed("jump") and is_on_floor() and not (gc.launched1 or gc.launched2):
-		print_debug("charging")
 		jump_charge = min(jump_charge + delta, MAX_JUMP_CHARGE)
 	else:
 		if jump_charge > 0.0 and Input.is_action_just_released("jump") and is_on_floor():
 			var power = lerp(physics.JUMP_VELOCITY, physics.JUMP_VELOCITY * 2, jump_charge / MAX_JUMP_CHARGE)
 			velocity.y += power
-			print_debug("jumping", jump_charge)
-		#print_debug("not jumping", jump_charge)
 		jump_charge = 0.0
 
 	# Update bar
@@ -178,9 +175,9 @@ func handle_anim():
 
 func handle_sprite_dir_auto():
 	if velocity.x > 10:
-		anim_sprite.flip_h = false
-	elif velocity.x < -10:
 		anim_sprite.flip_h = true
+	elif velocity.x < -10:
+		anim_sprite.flip_h = false
 
 
 func pet_in_range() -> bool:

@@ -18,10 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://ImportantAssets/Scripts/Global.gd"
+TransitionManager="*res://ImportantAssets/gameUI/transition_manager.tscn"
 
 [dotnet]
 
 project/assembly_name="Game Dev Team 1"
+
+[global_group]
+
+no_grapple=""
 
 [input]
 

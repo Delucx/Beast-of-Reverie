@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bky3lnoft6cto"]
+[gd_scene load_steps=43 format=3 uid="uid://bky3lnoft6cto"]
 
 [ext_resource type="Texture2D" uid="uid://e87iekghxbfc" path="res://Stages/LakeOfDisturbance/Screenshot 2025-08-01 002616.png" id="1_y7dl5"]
 [ext_resource type="Texture2D" uid="uid://hdqw1axfddty" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/foggradient.png" id="2_02yni"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://btvbqvn4i06r0" path="res://ImportantAssets/Resources/physics.tres" id="6_gwv0v"]
 [ext_resource type="Script" uid="uid://dcensidpajnq8" path="res://ImportantAssets/player/Scripts/camera_2d.gd" id="7_33dri"]
 [ext_resource type="Texture2D" uid="uid://ckp0lhvmmdas1" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/trees/tree1.png" id="8_o6wyy"]
+[ext_resource type="PackedScene" uid="uid://bbrjboiccn2jn" path="res://ImportantAssets/gameUI/game_ui.tscn" id="8_ujt8u"]
 [ext_resource type="Texture2D" uid="uid://dcjfk3jgytwd6" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/trees/tree2.png" id="9_34601"]
 [ext_resource type="Texture2D" uid="uid://cqi3y36t7q6dx" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/foreground and background/back_tree5.png" id="10_woc6k"]
 [ext_resource type="Texture2D" uid="uid://bn5icgo6v4ag0" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/floor/dirt_plain1.png" id="11_lq8pi"]
@@ -31,6 +32,32 @@
 [ext_resource type="Texture2D" uid="uid://dcdeay32vv6i8" path="res://Stages/LakeOfDisturbance/3. LAKE OF DISTURBANCE/back_log2.png" id="27_0q5am"]
 [ext_resource type="Texture2D" uid="uid://dcvdtywl0j2w6" path="res://Stages/LakeOfDisturbance/3. LAKE OF DISTURBANCE/back_log3.png" id="28_wp3hc"]
 [ext_resource type="Texture2D" uid="uid://cy5f6wmv02jqj" path="res://Stages/LakeOfDisturbance/3. LAKE OF DISTURBANCE/back_ancienttree3.png" id="29_4c7rt"]
+[ext_resource type="Texture2D" uid="uid://c22iufeyif4kl" path="res://Stages/CaveOfDisturbance/4. CAVE OF DISTURBANCE/cave_wall.png" id="32_0q5am"]
+[ext_resource type="Texture2D" uid="uid://be7eu56pwlfyv" path="res://Stages/CaveOfDisturbance/4. CAVE OF DISTURBANCE/front_cave.png" id="33_wp3hc"]
+[ext_resource type="Shader" uid="uid://dnd10phu3suvf" path="res://ImportantAssets/effects/fog_bg.gdshader" id="35_4c7rt"]
+[ext_resource type="Texture2D" uid="uid://b0st7naakxlbe" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/curved_vine1.png" id="36_gw3te"]
+[ext_resource type="Texture2D" uid="uid://bxa0b57sick6q" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/curved_vine2.png" id="37_ulhi6"]
+[ext_resource type="Texture2D" uid="uid://bngnhevia4alp" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/curved_vine3.png" id="38_xy2wp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ujt8u"]
+seed = 3
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7isrq"]
+width = 1152
+height = 648
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_ujt8u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gw3te"]
+shader = ExtResource("35_4c7rt")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_7isrq")
+shader_parameter/density = 1.0
+shader_parameter/speed = Vector2(-0.01, 0.01)
+shader_parameter/thickness = 2.5
+shader_parameter/view = 0.4
+shader_parameter/opacity = 0.9
 
 [sub_resource type="Resource" id="Resource_wnlbl"]
 script = ExtResource("4_m8fnm")
@@ -43,141 +70,19 @@ metadata/_custom_type_script = "uid://cmfv6718c27lr"
 [node name="Lake" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
 position = Vector2(17544.5, -2250.5)
 scale = Vector2(18.6615, 18.6615)
 texture = ExtResource("1_y7dl5")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(18017, -2507)
-scale = Vector2(19.9701, 6.32222)
+position = Vector2(17449, -12044)
+scale = Vector2(19.9701, 25.2352)
 texture = ExtResource("2_02yni")
-
-[node name="Pet" parent="." groups=["pet"] instance=ExtResource("3_u4wnh")]
-z_index = 2
-position = Vector2(80, 436)
-scale = Vector2(2, 2)
-collision_mask = 8
-physics = SubResource("Resource_wnlbl")
-
-[node name="Player" parent="." instance=ExtResource("5_klhix")]
-z_index = 2
-position = Vector2(191, 379)
-scale = Vector2(4, 4)
-physics = ExtResource("6_gwv0v")
-pet_path = NodePath("../Pet")
-player_grav = 2.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-zoom = Vector2(0.5, 0.5)
-process_callback = 0
-limit_left = 0
-limit_bottom = 723
-limit_smoothed = true
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-rotation_smoothing_speed = 2.0
-script = ExtResource("7_33dri")
-
-[node name="front" type="Node2D" parent="."]
-position = Vector2(610, -2071)
-scale = Vector2(1.46928, 1.46928)
-
-[node name="Tree1" type="Sprite2D" parent="front"]
-texture = ExtResource("8_o6wyy")
-
-[node name="Tree2" type="Sprite2D" parent="front"]
-position = Vector2(477.104, 101.41)
-scale = Vector2(0.971421, 0.971421)
-texture = ExtResource("9_34601")
-
-[node name="DirtPlain1" type="Sprite2D" parent="front"]
-position = Vector2(-40.1557, 1853.29)
-scale = Vector2(1.26833, 1.26833)
-texture = ExtResource("11_lq8pi")
-
-[node name="BrokenTree4" type="Sprite2D" parent="front"]
-position = Vector2(2621.69, 1359.85)
-rotation = 0.919767
-scale = Vector2(1.10155, 1.10155)
-texture = ExtResource("12_gbl41")
-
-[node name="BrokenTree2" type="Sprite2D" parent="front"]
-position = Vector2(5279.46, 405.641)
-rotation = 1.5015
-scale = Vector2(1.62709, 1.62709)
-texture = ExtResource("13_vpkvs")
-
-[node name="BrokenTree6" type="Sprite2D" parent="front"]
-position = Vector2(7961.72, 137.482)
-rotation = 1.49369
-scale = Vector2(1.12439, 1.12439)
-texture = ExtResource("14_u7m7q")
-
-[node name="BrokenTree5" type="Sprite2D" parent="front"]
-position = Vector2(10362.9, 1653.87)
-rotation = 1.37607
-scale = Vector2(2.26552, 2.26552)
-texture = ExtResource("15_ewxk7")
-
-[node name="BrokenTree3" type="Sprite2D" parent="front"]
-position = Vector2(11136.7, 620.712)
-rotation = -0.991501
-scale = Vector2(2.79387, 2.79387)
-texture = ExtResource("13_vpkvs")
-
-[node name="Flatrock2" type="Sprite2D" parent="front"]
-position = Vector2(6532.45, 1411.58)
-scale = Vector2(5.19569, 5.19569)
-texture = ExtResource("18_sl8pa")
-
-[node name="Hand1" type="Sprite2D" parent="front"]
-position = Vector2(7053.79, 1096.46)
-scale = Vector2(5.41762, 5.41762)
-texture = ExtResource("19_hg1ky")
-
-[node name="SmallBoulder2" type="Sprite2D" parent="front"]
-position = Vector2(8849.23, 556.735)
-scale = Vector2(1.42986, 1.42986)
-texture = ExtResource("20_napl1")
-
-[node name="SmallBoulder4" type="Sprite2D" parent="front"]
-position = Vector2(14122.6, -20.4182)
-scale = Vector2(2.58116, 2.58116)
-texture = ExtResource("21_0q5am")
-
-[node name="SmallBoulder3" type="Sprite2D" parent="front"]
-position = Vector2(13066.3, 52.4066)
-scale = Vector2(1.98906, 1.98906)
-texture = ExtResource("22_wp3hc")
-
-[node name="StickVar3" type="Sprite2D" parent="front"]
-position = Vector2(13651.6, 558.777)
-rotation = -1.75746
-scale = Vector2(5.63185, 5.63185)
-texture = ExtResource("23_4c7rt")
-
-[node name="IndivPebble1" type="Sprite2D" parent="front"]
-position = Vector2(14779.3, 1376.86)
-scale = Vector2(10.5124, 10.5124)
-texture = ExtResource("24_gbpxi")
-
-[node name="FrontLog1" type="Sprite2D" parent="."]
-position = Vector2(24495, -540)
-scale = Vector2(1.05604, 1.05604)
-texture = ExtResource("16_n7lc0")
-
-[node name="Log2" type="Sprite2D" parent="."]
-position = Vector2(25452, -344)
-rotation = -0.730853
-scale = Vector2(1.46928, 1.59374)
-texture = ExtResource("23_hg1ky")
 
 [node name="bg" type="Node2D" parent="."]
 z_index = -1
-position = Vector2(610, -2071)
+position = Vector2(-18.7031, -2071)
 scale = Vector2(1.46928, 1.46928)
 
 [node name="BackTree5" type="Sprite2D" parent="bg"]
@@ -206,8 +111,8 @@ scale = Vector2(1.44835, 1.44835)
 texture = ExtResource("26_napl1")
 
 [node name="BackLog2" type="Sprite2D" parent="bg"]
-position = Vector2(14354.7, 449.199)
-scale = Vector2(1.3679, 1.3679)
+position = Vector2(14349.9, 439.671)
+scale = Vector2(1.08559, 1.3679)
 texture = ExtResource("27_0q5am")
 
 [node name="BackLog3" type="Sprite2D" parent="bg"]
@@ -232,7 +137,240 @@ scale = Vector2(0.952346, 0.952346)
 texture = ExtResource("24_sl8pa")
 
 [node name="BackAncienttree7" type="Sprite2D" parent="bg"]
-position = Vector2(13316, 61.2545)
+position = Vector2(13348.7, 97.3265)
 rotation = -0.0660872
-scale = Vector2(0.988088, 0.988088)
+scale = Vector2(0.862683, 0.988088)
 texture = ExtResource("29_4c7rt")
+
+[node name="Log2" type="Sprite2D" parent="bg"]
+position = Vector2(16907.6, 1175.41)
+rotation = -0.730853
+scale = Vector2(1, 1.08471)
+texture = ExtResource("23_hg1ky")
+
+[node name="CaveWall" type="Sprite2D" parent="bg"]
+position = Vector2(20597.8, -14.2927)
+scale = Vector2(0.680605, 0.680605)
+texture = ExtResource("32_0q5am")
+
+[node name="front" type="Node2D" parent="."]
+position = Vector2(-18.7031, -2071)
+scale = Vector2(1.46928, 1.46928)
+
+[node name="Tree1" type="Sprite2D" parent="front"]
+texture = ExtResource("8_o6wyy")
+
+[node name="Tree2" type="Sprite2D" parent="front"]
+position = Vector2(477.104, 101.41)
+scale = Vector2(0.971421, 0.971421)
+texture = ExtResource("9_34601")
+
+[node name="DirtPlain1" type="Sprite2D" parent="front"]
+z_index = 1
+position = Vector2(-40.1557, 1853.29)
+scale = Vector2(1.26833, 1.26833)
+texture = ExtResource("11_lq8pi")
+
+[node name="BrokenTree4" type="Sprite2D" parent="front"]
+position = Vector2(2621.69, 1359.85)
+rotation = 0.919767
+scale = Vector2(1.10155, 1.10155)
+texture = ExtResource("12_gbl41")
+
+[node name="BrokenTree2" type="Sprite2D" parent="front"]
+position = Vector2(5340.71, 521.344)
+rotation = 1.5015
+scale = Vector2(1.62709, 1.62709)
+texture = ExtResource("13_vpkvs")
+
+[node name="BrokenTree6" type="Sprite2D" parent="front"]
+position = Vector2(7955.6, 240.934)
+rotation = 1.49369
+scale = Vector2(1.12439, 1.12439)
+texture = ExtResource("14_u7m7q")
+
+[node name="BrokenTree5" type="Sprite2D" parent="front"]
+position = Vector2(10472.5, 1635.49)
+rotation = 1.06802
+scale = Vector2(2.26552, 2.26552)
+texture = ExtResource("15_ewxk7")
+
+[node name="BrokenTree3" type="Sprite2D" parent="front"]
+position = Vector2(11136.7, 620.712)
+rotation = -0.991501
+scale = Vector2(2.79387, 2.79387)
+texture = ExtResource("13_vpkvs")
+
+[node name="Flatrock2" type="Sprite2D" parent="front"]
+position = Vector2(6537.9, 1594.66)
+scale = Vector2(5.19569, 5.19569)
+texture = ExtResource("18_sl8pa")
+
+[node name="Hand1" type="Sprite2D" parent="front"]
+position = Vector2(7053.79, 1267.97)
+scale = Vector2(5.41762, 5.41762)
+texture = ExtResource("19_hg1ky")
+
+[node name="SmallBoulder2" type="Sprite2D" parent="front"]
+position = Vector2(9056.14, 507.732)
+scale = Vector2(1.42986, 1.42986)
+texture = ExtResource("20_napl1")
+
+[node name="SmallBoulder4" type="Sprite2D" parent="front"]
+position = Vector2(14720.8, 129.315)
+scale = Vector2(2.58116, 2.58116)
+texture = ExtResource("21_0q5am")
+
+[node name="SmallBoulder3" type="Sprite2D" parent="front"]
+position = Vector2(12745, 168.79)
+scale = Vector2(1.98906, 1.98906)
+texture = ExtResource("22_wp3hc")
+
+[node name="StickVar3" type="Sprite2D" parent="front"]
+position = Vector2(13640.7, 724.845)
+rotation = -1.75746
+scale = Vector2(5.63185, 5.63185)
+texture = ExtResource("23_4c7rt")
+
+[node name="IndivPebble1" type="Sprite2D" parent="front"]
+position = Vector2(14417.9, 1594.66)
+scale = Vector2(10.5124, 10.5124)
+texture = ExtResource("24_gbpxi")
+
+[node name="FrontLog1" type="Sprite2D" parent="front"]
+position = Vector2(16256.3, 1042.01)
+scale = Vector2(0.718747, 0.718747)
+texture = ExtResource("16_n7lc0")
+
+[node name="FrontCave" type="Sprite2D" parent="front"]
+position = Vector2(20337.9, 146.33)
+scale = Vector2(0.680605, 0.680605)
+texture = ExtResource("33_wp3hc")
+
+[node name="Water&Wall" type="Node2D" parent="."]
+position = Vector2(-628.703, 0)
+scale = Vector2(21.2385, 0.731481)
+
+[node name="ColorRect" type="ColorRect" parent="Water&Wall"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gw3te")
+offset_left = -66.4829
+offset_top = 483.949
+offset_right = 1085.52
+offset_bottom = 1131.95
+scale = Vector2(1.59459, 2.71235)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Water&Wall"]
+z_index = 2
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gw3te")
+offset_left = 110.022
+offset_top = 695.848
+offset_right = 1262.02
+offset_bottom = 1343.85
+scale = Vector2(1.59459, 2.71235)
+metadata/_edit_use_anchors_ = true
+
+[node name="GroundCollision" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(-628.703, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundCollision"]
+position = Vector2(551, 749)
+scale = Vector2(1.86353, 1.86353)
+polygon = PackedVector2Array(-670, -205.9, -707.6, -207, -711, -207, -711, -205.7, -820, -183.6, -820, -183, -866.6, -183, -886, -186.7, -886, -187.9, -910, -189, -911.2, -189, -945.4, -182, -960, -182, -960, 207, 960, 207, 960, -181, 959, -181, 959, -181.8, 927.1, -185, 912.4, -185, 890, -189.7, 890, -191, 865.8, -191, 831.7, -185, 815.2, -185, 777, -188.9, 777, -190, 721.3, -190, 686, -195.8, 686, -197.1, 625.9, -193, 622.8, -193, 580, -184.6, 580, -184, 464.3, -184, 405, -191.8, 405, -193.3, 360.7, -187, 328, -199.5, 328, -201.4, 281, -193.7, 281, -193, 257.8, -193, 216, -184.6, 216, -184, 87, -183, 78.1, -183, -34, -187, -54, -187, -170, -183.9, -170, -183, -288.9, -183, -308, -187.6, -308, -188.9, -359.9, -192, -361.2, -192, -408, -183.7, -408, -183, -551, -182, -552.6, -182, -574, -186.7, -574, -187.9, -626, -190, -626.7, -190, -670, -204.5)
+
+[node name="Pet" parent="." groups=["pet"] instance=ExtResource("3_u4wnh")]
+z_index = 2
+position = Vector2(1080, 323)
+scale = Vector2(2, 2)
+collision_mask = 8
+physics = SubResource("Resource_wnlbl")
+
+[node name="Player" parent="." instance=ExtResource("5_klhix")]
+z_index = 2
+position = Vector2(1203, 301)
+scale = Vector2(4, 4)
+physics = ExtResource("6_gwv0v")
+pet_path = NodePath("../Pet")
+ui_path = NodePath("../GameUI/BarUI")
+player_grav = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+limit_left = 0
+limit_bottom = 723
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+script = ExtResource("7_33dri")
+
+[node name="GameUI" parent="." instance=ExtResource("8_ujt8u")]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="BarUI" parent="GameUI" index="0"]
+offset_left = -2.0
+offset_top = 636.0
+offset_right = -2.0
+offset_bottom = 636.0
+
+[node name="InventoryUI" parent="GameUI" index="1"]
+offset_left = 448.0
+offset_top = 594.0
+offset_right = 488.0
+offset_bottom = 634.0
+
+[node name="GridContainer" parent="GameUI/InventoryUI" index="0"]
+offset_left = 427.5
+offset_top = -66.0
+offset_right = 671.5
+offset_bottom = 31.0
+
+[node name="CurvedVine1" type="Sprite2D" parent="."]
+position = Vector2(6754, -2329)
+scale = Vector2(1.16682, 5.26342)
+texture = ExtResource("36_gw3te")
+
+[node name="CurvedVine2" type="Sprite2D" parent="."]
+position = Vector2(8807, -2565)
+scale = Vector2(3.81159, 6.74384)
+texture = ExtResource("37_ulhi6")
+
+[node name="CurvedVine3" type="Sprite2D" parent="."]
+position = Vector2(12271, -2861)
+scale = Vector2(1.99593, 2.89737)
+texture = ExtResource("38_xy2wp")
+
+[node name="CurvedVine4" type="Sprite2D" parent="."]
+position = Vector2(4643, -2243)
+scale = Vector2(1.59133, 8.49756)
+texture = ExtResource("36_gw3te")
+
+[node name="CurvedVine5" type="Sprite2D" parent="."]
+position = Vector2(10934, -2777)
+scale = Vector2(2.1501, 6.15753)
+texture = ExtResource("37_ulhi6")
+
+[node name="CurvedVine6" type="Sprite2D" parent="."]
+position = Vector2(7780, -2639)
+scale = Vector2(3.00678, 4.47537)
+texture = ExtResource("38_xy2wp")
+
+[node name="CurvedVine7" type="Sprite2D" parent="."]
+position = Vector2(13523, -2513)
+scale = Vector2(1.04658, 7.62877)
+texture = ExtResource("37_ulhi6")
+
+[node name="CurvedVine8" type="Sprite2D" parent="."]
+position = Vector2(13066, -2479)
+scale = Vector2(0.879404, 4.47865)
+texture = ExtResource("38_xy2wp")
+
+[editable path="GameUI"]

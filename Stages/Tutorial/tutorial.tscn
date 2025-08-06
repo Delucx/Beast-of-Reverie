@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dgwie4uduy8wa"]
+[gd_scene load_steps=117 format=3 uid="uid://dgwie4uduy8wa"]
 
 [ext_resource type="Texture2D" uid="uid://cimris8yhbkde" path="res://Stages/Tutorial/1. PUTRID SEA/background/Water & Wall.png" id="1_gotrj"]
 [ext_resource type="Texture2D" uid="uid://bxvihtb1ijx80" path="res://Stages/Tutorial/1. PUTRID SEA/floor/sand_newstart.png" id="2_8gg8w"]
@@ -33,14 +33,16 @@
 [ext_resource type="Texture2D" uid="uid://vivb81gamq6f" path="res://trial-game-files/assets/Pixel Adventure 1/Free/Main Characters/Ninja Frog/Fall (32x32).png" id="29_2i280"]
 [ext_resource type="Texture2D" uid="uid://dndrkjdne7tf" path="res://trial-game-files/assets/Pixel Adventure 1/Free/Main Characters/Ninja Frog/Idle (32x32).png" id="30_ongrn"]
 [ext_resource type="Texture2D" uid="uid://cie6b5hv7jpsu" path="res://trial-game-files/assets/Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="31_qsmna"]
-[ext_resource type="PackedScene" uid="uid://bu3pfnr2o11jx" path="res://ImportantAssets/fog_controller.tscn" id="31_tv5t0"]
 [ext_resource type="Texture2D" uid="uid://bptuql46p3ndv" path="res://trial-game-files/assets/Pixel Adventure 1/Free/Main Characters/Ninja Frog/Run (32x32).png" id="32_74bi7"]
-[ext_resource type="PackedScene" uid="uid://bi7i0ldvd500c" path="res://ImportantAssets/effects/fog_bg.tscn" id="32_m4wl4"]
+[ext_resource type="Texture2D" uid="uid://cdbblanidbgro" path="res://ImportantAssets/player/Animations/crouch.PNG" id="32_c1tto"]
+[ext_resource type="Texture2D" uid="uid://dl54fdqw7tm5g" path="res://ImportantAssets/player/Animations/fall.PNG" id="33_2i280"]
 [ext_resource type="Script" uid="uid://btnh1h5h2pkym" path="res://ImportantAssets/player/Scripts/player_glide.gd" id="33_24yxq"]
-[ext_resource type="PackedScene" uid="uid://c4j0eq4mrbtt6" path="res://ImportantAssets/effects/fog_forebg.tscn" id="33_io48u"]
-[ext_resource type="PackedScene" uid="uid://bxhwvm8a5lx5u" path="res://ImportantAssets/effects/fog_midbg.tscn" id="34_xb44j"]
+[ext_resource type="Texture2D" uid="uid://rlfthcx86orr" path="res://ImportantAssets/player/Animations/idle.PNG" id="34_ongrn"]
 [ext_resource type="Script" uid="uid://cvya8cgyqj8wk" path="res://Stages/Tutorial/transition_to_next_scene.gd" id="35_m4wl4"]
+[ext_resource type="Texture2D" uid="uid://1l4q6r2q0xd3" path="res://ImportantAssets/player/Animations/jump.PNG" id="35_qsmna"]
+[ext_resource type="Texture2D" uid="uid://cfkgxu23i3nj7" path="res://ImportantAssets/player/Animations/RUN.png" id="36_74bi7"]
 [ext_resource type="PackedScene" uid="uid://bbrjboiccn2jn" path="res://ImportantAssets/gameUI/game_ui.tscn" id="36_io48u"]
+[ext_resource type="PackedScene" uid="uid://clwn081hug6ot" path="res://ImportantAssets/gameUI/transition_manager.tscn" id="39_60dsc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kv54i"]
 normal = Vector2(1, 0)
@@ -142,6 +144,258 @@ _data = {
 &"RESET": SubResource("Animation_n6yeh"),
 &"tree_pulled": SubResource("Animation_ahbau")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4wl4"]
+size = Vector2(371, 1112)
+
+[sub_resource type="Resource" id="Resource_k1wjb"]
+script = ExtResource("28_jbv1u")
+SPEED = 100.0
+JUMP_VELOCITY = -200.0
+ACCELERATION = 0.1
+DECELERATION = 1.0
+metadata/_custom_type_script = "uid://cmfv6718c27lr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nml1o"]
+atlas = ExtResource("32_c1tto")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lv3i"]
+atlas = ExtResource("32_c1tto")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8l5p"]
+atlas = ExtResource("32_c1tto")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0wyr"]
+atlas = ExtResource("32_c1tto")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkr62"]
+atlas = ExtResource("32_c1tto")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p632k"]
+atlas = ExtResource("32_c1tto")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqkew"]
+atlas = ExtResource("33_2i280")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mr10"]
+atlas = ExtResource("33_2i280")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv4v8"]
+atlas = ExtResource("33_2i280")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im5vc"]
+atlas = ExtResource("33_2i280")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtimr"]
+atlas = ExtResource("33_2i280")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxwli"]
+atlas = ExtResource("33_2i280")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yghhu"]
+atlas = ExtResource("34_ongrn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebv4"]
+atlas = ExtResource("34_ongrn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jqx7"]
+atlas = ExtResource("34_ongrn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrtjp"]
+atlas = ExtResource("34_ongrn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqbi2"]
+atlas = ExtResource("34_ongrn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjqye"]
+atlas = ExtResource("34_ongrn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks5c2"]
+atlas = ExtResource("35_qsmna")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p8xj"]
+atlas = ExtResource("35_qsmna")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk64n"]
+atlas = ExtResource("35_qsmna")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpno8"]
+atlas = ExtResource("35_qsmna")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqssi"]
+atlas = ExtResource("35_qsmna")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbeoy"]
+atlas = ExtResource("35_qsmna")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35sdo"]
+atlas = ExtResource("36_74bi7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0125"]
+atlas = ExtResource("36_74bi7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol2in"]
+atlas = ExtResource("36_74bi7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0uvo"]
+atlas = ExtResource("36_74bi7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojpt3"]
+atlas = ExtResource("36_74bi7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx46x"]
+atlas = ExtResource("36_74bi7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rs8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nml1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lv3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8l5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0wyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkr62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p632k")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqkew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mr10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv4v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im5vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtimr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxwli")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yghhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jqx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrtjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqbi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjqye")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks5c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p8xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk64n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpno8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqssi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbeoy")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35sdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0125")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol2in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0uvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojpt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx46x")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6upyo"]
+radius = 7.0
 
 [sub_resource type="Resource" id="Resource_jcaew"]
 script = ExtResource("28_jbv1u")
@@ -251,7 +505,7 @@ region = Rect2(320, 0, 32, 32)
 atlas = ExtResource("32_74bi7")
 region = Rect2(352, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0rs8m"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_24yxq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -349,19 +603,16 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6upyo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_txu8q"]
 radius = 7.0
 
 [sub_resource type="Resource" id="Resource_33e4n"]
 script = ExtResource("28_jbv1u")
-SPEED = 150.0
-JUMP_VELOCITY = -200.0
+SPEED = 100.0
+JUMP_VELOCITY = -300.0
 ACCELERATION = 0.1
 DECELERATION = 1.0
 metadata/_custom_type_script = "uid://cmfv6718c27lr"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4wl4"]
-size = Vector2(371, 1112)
 
 [node name="Tutorial" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -782,92 +1033,17 @@ script = ExtResource("25_ahbau")
 [node name="Rope" type="CollisionPolygon2D" parent="Anima/Rope/PetInteract"]
 polygon = PackedVector2Array(9765, 277, 9767, 525, 9775, 525)
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["no_grapple", "player"]]
-position = Vector2(8502, 489)
-collision_layer = 2
-script = ExtResource("26_k1wjb")
-physics = SubResource("Resource_jcaew")
-pet_path = NodePath("../Pet")
-ui_path = NodePath("../GameUI/BarUI")
-player_grav = 1.0
-
-[node name="GrappleController" type="Node2D" parent="Player"]
-script = ExtResource("28_c1tto")
-grapple_speed = 1000.0
-retract_speed = 1000.0
-rest_length = 40.0
-stiffness = 20.0
-max_grapple_distance = 400.0
-carry_pet_stiff = 0.4
-carry_pet_damp = 1.0
-
-[node name="RayCast2D" type="RayCast2D" parent="Player/GrappleController"]
-target_position = Vector2(0, 0)
-
-[node name="Line2D" type="Line2D" parent="Player/GrappleController"]
-points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(0, 0, 0, 1)
-
-[node name="RayCast2D2" type="RayCast2D" parent="Player/GrappleController"]
-target_position = Vector2(0, 0)
-
-[node name="Line2D2" type="Line2D" parent="Player/GrappleController"]
-points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(0, 0, 0, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-sprite_frames = SubResource("SpriteFrames_0rs8m")
-animation = &"fall"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_6upyo")
-
-[node name="Scripts" type="Node" parent="Player"]
-
-[node name="glide" type="Node" parent="Player/Scripts"]
-script = ExtResource("33_24yxq")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-zoom = Vector2(1.5, 1.5)
-process_callback = 0
-limit_left = 0
-limit_top = -354
-limit_right = 10000
-limit_bottom = 723
-limit_smoothed = true
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-rotation_smoothing_speed = 2.0
-script = ExtResource("28_n6yeh")
-
-[node name="Pet" parent="." groups=["pet"] instance=ExtResource("27_a5uoa")]
-position = Vector2(32, 516)
-scale = Vector2(0.5, 0.5)
-collision_mask = 8
-physics = SubResource("Resource_33e4n")
-
-[node name="fog_bg" parent="." instance=ExtResource("32_m4wl4")]
-visible = false
-
-[node name="fog_forebg" parent="." instance=ExtResource("33_io48u")]
-visible = false
-
-[node name="fog_midbg" parent="." instance=ExtResource("34_xb44j")]
-visible = false
-
-[node name="FogController" parent="." instance=ExtResource("31_tv5t0")]
-visible = false
-position = Vector2(11049, 373)
-
 [node name="TransitionScene" type="Area2D" parent="."]
+position = Vector2(1262, -33)
+collision_mask = 3
 script = ExtResource("35_m4wl4")
 next_scene_path = "res://Stages/ForsakenWoods/forsaken1.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionScene"]
 position = Vector2(8884, 231)
 shape = SubResource("RectangleShape2D_m4wl4")
+
+[node name="TransitionManager" parent="." instance=ExtResource("39_60dsc")]
 
 [node name="GameUI" parent="." instance=ExtResource("36_io48u")]
 scale = Vector2(0.5, 0.5)
@@ -890,6 +1066,136 @@ offset_left = 427.5
 offset_top = -66.0
 offset_right = 671.5
 offset_bottom = 31.0
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["no_grapple", "player"]]
+position = Vector2(8367, 478)
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+script = ExtResource("26_k1wjb")
+physics = SubResource("Resource_k1wjb")
+pet_path = NodePath("../Pet")
+ui_path = NodePath("../GameUI/BarUI")
+player_grav = 2.0
+
+[node name="GrappleController" type="Node2D" parent="Player"]
+script = ExtResource("28_c1tto")
+grapple_speed = 1000.0
+retract_speed = 1000.0
+rest_length = 40.0
+stiffness = 20.0
+max_grapple_distance = 400.0
+carry_pet_stiff = 0.4
+carry_pet_damp = 1.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Player/GrappleController"]
+target_position = Vector2(0, 0)
+
+[node name="Line2D" type="Line2D" parent="Player/GrappleController"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Player/GrappleController"]
+target_position = Vector2(0, 0)
+
+[node name="Line2D2" type="Line2D" parent="Player/GrappleController"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_0rs8m")
+animation = &"fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_6upyo")
+
+[node name="Scripts" type="Node" parent="Player"]
+
+[node name="glide" type="Node" parent="Player/Scripts"]
+script = ExtResource("33_24yxq")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
+process_callback = 0
+limit_left = 0
+limit_top = -354
+limit_right = 10000
+limit_bottom = 723
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+script = ExtResource("28_n6yeh")
+
+[node name="Player1" type="CharacterBody2D" parent="." groups=["no_grapple", "player"]]
+visible = false
+position = Vector2(8502, 489)
+collision_layer = 2
+script = ExtResource("26_k1wjb")
+physics = SubResource("Resource_jcaew")
+pet_path = NodePath("../Pet")
+ui_path = NodePath("../GameUI/BarUI")
+player_grav = 1.0
+
+[node name="GrappleController" type="Node2D" parent="Player1"]
+script = ExtResource("28_c1tto")
+grapple_speed = 1000.0
+retract_speed = 1000.0
+rest_length = 40.0
+stiffness = 20.0
+max_grapple_distance = 400.0
+carry_pet_stiff = 0.4
+carry_pet_damp = 1.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Player1/GrappleController"]
+target_position = Vector2(0, 0)
+
+[node name="Line2D" type="Line2D" parent="Player1/GrappleController"]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0, 0, 1)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Player1/GrappleController"]
+target_position = Vector2(0, 0)
+
+[node name="Line2D2" type="Line2D" parent="Player1/GrappleController"]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player1"]
+sprite_frames = SubResource("SpriteFrames_24yxq")
+animation = &"fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_txu8q")
+
+[node name="Scripts" type="Node" parent="Player1"]
+
+[node name="glide" type="Node" parent="Player1/Scripts"]
+script = ExtResource("33_24yxq")
+
+[node name="Camera2D" type="Camera2D" parent="Player1"]
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
+process_callback = 0
+limit_left = 0
+limit_top = -354
+limit_right = 10000
+limit_bottom = 723
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 2.0
+script = ExtResource("28_n6yeh")
+
+[node name="Pet" parent="." groups=["pet"] instance=ExtResource("27_a5uoa")]
+position = Vector2(8274, 482)
+collision_mask = 8
+physics = SubResource("Resource_33e4n")
 
 [connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered"]
 [connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited"]

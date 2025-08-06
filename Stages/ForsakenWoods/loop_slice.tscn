@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://csgb21o2jw3nw"]
+[gd_scene load_steps=45 format=3 uid="uid://csgb21o2jw3nw"]
 
 [ext_resource type="Texture2D" uid="uid://bn5icgo6v4ag0" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/floor/dirt_plain1.png" id="3_7wu3b"]
 [ext_resource type="Texture2D" uid="uid://cb77ffjcoxgp8" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/floor/dirt_plain2.png" id="4_6huhf"]
@@ -35,6 +35,13 @@
 [ext_resource type="PackedScene" uid="uid://bu3pfnr2o11jx" path="res://ImportantAssets/fog_controller.tscn" id="32_7wu3b"]
 [ext_resource type="Texture2D" uid="uid://0kwwmlatguqq" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/foreground and background/front_tree5.png" id="32_axn1f"]
 [ext_resource type="Texture2D" uid="uid://cmrxhaf64qsgv" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/foreground and background/front_tree6.png" id="33_kah4b"]
+[ext_resource type="Texture2D" uid="uid://bn5dmjf6mktk5" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/left_web2.png" id="36_rg7cu"]
+[ext_resource type="Texture2D" uid="uid://bv0047rq2ecbs" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/left_web1.png" id="37_ylvsp"]
+[ext_resource type="Texture2D" uid="uid://b14lsu3gslheh" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/left_web3.png" id="38_8doul"]
+[ext_resource type="Texture2D" uid="uid://65hxprvx602y" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/hanging_web1.png" id="39_v1rof"]
+[ext_resource type="Texture2D" uid="uid://cp1b0uy62ew64" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/circle_web1.png" id="40_aeb4w"]
+[ext_resource type="Texture2D" uid="uid://ck1mtutxa6s1p" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/bigcircle_web1.png" id="41_1yo2j"]
+[ext_resource type="Texture2D" uid="uid://cw551q58sdtim" path="res://Stages/ForsakenWoods/2. FORSAKEN WOODS/miscellaneous/circle_web2.png" id="42_et7ai"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6huhf"]
 a = Vector2(2044, 1483)
@@ -92,7 +99,6 @@ position = Vector2(18894, 748)
 texture = ExtResource("4_6huhf")
 
 [node name="GroundCollision" type="StaticBody2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(-1261, -308)
 scale = Vector2(1.5, 1.5)
@@ -139,7 +145,6 @@ position = Vector2(18889.3, 782.797)
 polygon = PackedVector2Array(662, -197.7, 662, -196.2, 579, -185.1, 579, -184.5, 466.3, -184.5, 417, -190.2, 417, -191.4, 311, -193.5, 311, -194.6, 165.9, -191.5, 164.9, -191.5, 83, -184.2, 20, -186.4, 20, -187.5, -213.1, -187.5, -259.3, -183.5, -262.7, -183.5, -334, -191.3, -334, -192.8, -444.3, -183.5, -527.8, -183.5, -703.9, -196.5, -706.1, -196.5, -830, -190.4, -830, -189.6, -894, -190.5, -897.3, -190.5, -956.5, -180.5, -960, -180.5, -958, 202.5, 956.2, 202.5, 960, 198.7, 960, -180.1, 891, -190.2, 891, -191.8, 831.7, -185.5, 815.2, -185.5)
 
 [node name="Bush" type="Node2D" parent="."]
-visible = false
 z_index = 2
 position = Vector2(22279, -2009)
 scale = Vector2(1.5, 1.5)
@@ -293,7 +298,6 @@ position = Vector2(1689, 1683)
 texture = ExtResource("9_5k6wi")
 
 [node name="TreeBack" type="Node2D" parent="."]
-visible = false
 z_index = -3
 position = Vector2(2593, -2144)
 scale = Vector2(1.5, 1.5)
@@ -407,7 +411,6 @@ position = Vector2(7894.83, 92)
 texture = ExtResource("13_v1rof")
 
 [node name="TreeMid" type="Node2D" parent="."]
-visible = false
 z_index = -2
 position = Vector2(1706, -2209)
 scale = Vector2(1.5, 1.5)
@@ -613,6 +616,7 @@ position = Vector2(1818.67, -1923.33)
 texture = ExtResource("30_jqil3")
 
 [node name="TreeFrontCollision" type="StaticBody2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TreeFrontCollision"]
 polygon = PackedVector2Array(2045, -73, 2193, -363, 2250, -348, 2227, -376, 2230, -392, 2274, -393, 2321, -447, 2266, -434, 2288, -496, 2213, -442, 2195, -472, 2214, -521, 2174, -492, 2160, -416, 2040, -244)
@@ -1747,7 +1751,6 @@ one_way_collision = true
 one_way_collision_margin = 20.0
 
 [node name="LeftTrigger" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
 monitorable = false
 
@@ -1755,40 +1758,111 @@ monitorable = false
 shape = SubResource("SegmentShape2D_6huhf")
 
 [node name="RightTrigger" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightTrigger"]
 shape = SubResource("SegmentShape2D_c8t1l")
 
-[node name="FogController" parent="." instance=ExtResource("32_7wu3b")]
+[node name="FogController" parent="." groups=["no_grapple"] instance=ExtResource("32_7wu3b")]
 visible = false
 position = Vector2(13999, 0)
 
+[node name="OuterFogArea" parent="FogController" index="0" groups=["no_grapple"]]
+
+[node name="CollisionShape2D" parent="FogController/OuterFogArea" index="0" groups=["no_grapple"]]
+position = Vector2(661.667, 0)
+
+[node name="InnerFogArea" parent="FogController" index="1" groups=["no_grapple"]]
+
+[node name="CollisionShape2D" parent="FogController/InnerFogArea" index="0" groups=["no_grapple"]]
+position = Vector2(143.333, 0)
+
 [node name="Fog" type="Node2D" parent="."]
-visible = false
 position = Vector2(-485, 0)
 scale = Vector2(1.5, 1.5)
 
 [node name="fog_forebg" parent="Fog" instance=ExtResource("4_c8t1l")]
 layer = 1
-visible = false
 
 [node name="fog_midbg" parent="Fog" instance=ExtResource("5_cxdfs")]
 layer = -1
-visible = false
 
 [node name="fog_bg" parent="Fog" instance=ExtResource("6_16a3b")]
-visible = false
 
-[node name="SpiderPath" type="StaticBody2D" parent="."]
+[node name="SpiderPath" type="StaticBody2D" parent="." groups=["no_grapple"]]
 visible = false
-collision_layer = 17
-collision_mask = 17
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpiderPath"]
 polygon = PackedVector2Array(29072, -5014, 28889, -5139, 28400, -5176, 28361, -5239, 28272, -5260, 27883, -5194, 27798, -5274, 27689, -5190, 27138, -5034, 26731, -5171, 26562, -5267, 25938, -5381, 25459, -5396, 25358, -5313, 24812, -5169, 24459, -5024, 24200, -5022, 23517, -4970, 23413, -4968, 23346, -4929, 23184, -4845, 22451, -4846, 22306, -4900, 21595, -5055, 21585, -5138, 21539, -5188, 21048, -5225, 21007, -5279, 20921, -5303, 20533, -5242, 20449, -5315, 20344, -5231, 19791, -5080, 19402, -5091, 18718, -4923, 18617, -4927, 18190, -5270, 17951, -5155, 17722, -4983, 17363, -4814, 16937, -5154, 16703, -5037, 16407, -5050, 15935, -5116, 15900, -5159, 15389, -5195, 15361, -5252, 15270, -5268, 14875, -5208, 14802, -5285, 14695, -5200, 14141, -5050, 13339, -4874, 12901, -5130, 12859, -5180, 12353, -5229, 12316, -5285, 12224, -5303, 11759, -5303, 11111, -5214, 10747, -5007, 10173, -4936, 9577, -4923, 9464, -5014, 9070, -5119, 8743, -5095, 7958, -5042, 7592, -5212, 7356, -5089, 6795, -5020, 6406, -5131, 6076, -5098, 4528, -5014, 3057, -5126, 1648, -5244, 1023, -5359, 553, -5372, -100, -5138, -281, -4868, -1137, 2719, 31442, 2158)
+
+[node name="Web" type="Node2D" parent="."]
+visible = false
+position = Vector2(28537, -4889)
+scale = Vector2(3.54831, 2.36567)
+
+[node name="LeftWeb2" type="Sprite2D" parent="Web"]
+z_index = -1
+scale = Vector2(1, 1)
+texture = ExtResource("36_rg7cu")
+
+[node name="LeftWeb1" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-143.449, -83.2739)
+rotation = -0.22461
+scale = Vector2(1.2075, 0.972345)
+skew = 0.123405
+texture = ExtResource("37_ylvsp")
+
+[node name="LeftWeb3" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-302.961, -46.4978)
+rotation = 0.441071
+scale = Vector2(3.29638, 2.87797)
+skew = -0.234231
+texture = ExtResource("38_8doul")
+
+[node name="HangingWeb1" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-536.312, -37.1985)
+scale = Vector2(0.628753, 0.96466)
+texture = ExtResource("39_v1rof")
+
+[node name="HangingWeb2" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-451.483, 2.53662)
+scale = Vector2(1.80368, 0.711316)
+texture = ExtResource("39_v1rof")
+
+[node name="CircleWeb1" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-694.979, -96.3782)
+scale = Vector2(0.787928, 0.83497)
+texture = ExtResource("40_aeb4w")
+
+[node name="LeftWeb4" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-611.277, -119.627)
+scale = Vector2(0.793974, 0.843213)
+texture = ExtResource("37_ylvsp")
+
+[node name="BigcircleWeb1" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-815.318, -149.217)
+rotation = -1.29649
+scale = Vector2(0.474789, 0.347672)
+skew = 0.290081
+texture = ExtResource("41_1yo2j")
+
+[node name="CircleWeb2" type="Sprite2D" parent="Web"]
+z_index = -1
+position = Vector2(-955.103, -123.855)
+rotation = 1.03304
+scale = Vector2(0.594316, 0.578123)
+skew = -0.392544
+texture = ExtResource("42_et7ai")
 
 [editable path="FogController"]
 [editable path="Fog/fog_forebg"]

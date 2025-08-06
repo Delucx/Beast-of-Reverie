@@ -13,6 +13,11 @@ var left_trigger
 var right_trigger
 var removed = false
 
+func _ready():
+	if TransitionManager.fade_rect.modulate.a == 1.0:
+		var tween = TransitionManager.create_tween()
+		tween.tween_property(TransitionManager.fade_rect, "modulate:a", 0.0, 5.0)
+
 func spawn_loop_map(from_position: Vector2):
 	current_map_origin = from_position
 	var new_map = loop_map_scene.instantiate()

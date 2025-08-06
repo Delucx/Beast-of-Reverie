@@ -51,15 +51,15 @@ func handle_anim():
 
 func handle_sprite_dir_auto():
 	if velocity.x > 10:
-		anim_sprite.flip_h = false
-	elif velocity.x < -10:
 		anim_sprite.flip_h = true
+	elif velocity.x < -10:
+		anim_sprite.flip_h = false
 		
 	if is_carrying:
 		if player.velocity.x > 10:
-			anim_sprite.flip_h = false
-		elif player.velocity.x < -10:
 			anim_sprite.flip_h = true
+		elif player.velocity.x < -10:
+			anim_sprite.flip_h = false
 
 func stop():
 	velocity.x = lerp(velocity.x, 0.0, physics.DECELERATION)

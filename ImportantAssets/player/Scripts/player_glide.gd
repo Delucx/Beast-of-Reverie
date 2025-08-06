@@ -1,6 +1,6 @@
 extends Node
 
-@export var glide_factor: float = 0.3
+@export var glide_factor: float = 0.1
 @export var grapple_gravity_factor: float = 0.01
 
 func handle_glide(velocity: Vector2, gravity: float, delta: float, on_floor: bool, is_grappling1: bool, is_grappling2: bool) -> Vector2:
